@@ -1,8 +1,12 @@
-import React from 'react';
+import React from "react";
+import { Container } from "@material-ui/core";
+import LinearStepper from "./Components/LinearStepper";
 
 function App() {
   return (
-    <h1>Follow</h1>
+    <Container maxWidth="md">
+      <LinearStepper />
+    </Container>
   );
 }
 
