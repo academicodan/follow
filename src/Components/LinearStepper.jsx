@@ -5,8 +5,7 @@ import {
   Step,
   StepLabel,
   Button,
-  TextField,
-  StepContent,
+  TextField
 } from "@material-ui/core";
 
 import {
@@ -710,6 +709,7 @@ const LinearStepper = () => {
         <Typography variant="h3" align="center">
           Listagem de informações
         </Typography>
+        // <pre>{JSON.stringify(methods.getValues)}</pre>
       )}
     </div>
   );
