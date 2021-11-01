@@ -37,7 +37,6 @@ export const Pharmaco = () => {
         }}
       >
         <TextField
-          // defaultValue={null}
           value={codigoChaveFarmaco}
           onChange={(ev) => setCodigoChaveFarmaco(ev.target.value)}
           id="codigo-chave-farmaco"
@@ -51,7 +50,6 @@ export const Pharmaco = () => {
         />
 
         <TextField
-          // defaultValue={null}
           value={tipo}
           onChange={(ev) => setTipo(ev.target.value)}
           id="tipo"
@@ -65,7 +63,6 @@ export const Pharmaco = () => {
         />
 
         <TextField
-          // defaultValue={null}
           value={peso}
           onChange={(ev) => setPeso(ev.target.value)}
           id="peso"
