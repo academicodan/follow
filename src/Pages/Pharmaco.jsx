@@ -1,9 +1,11 @@
-import { Button, InputAdornment, TextField } from "@material-ui/core";
+import { InputAdornment, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useForm, FormActions } from "../context/FormContext";
-import { Theme } from "./../Components/Theme";
 import axios from "axios";
+import { ContainerApp } from "../Components/ContainerApp";
+import { FooterActions } from "../Components/FooterActions";
+
 export const Pharmaco = () => {
   const [codigoChaveFarmaco, setCodigoChaveFarmaco] = useState("");
   const [tipo, setTipo] = useState("");
@@ -53,7 +55,7 @@ export const Pharmaco = () => {
   };
 
   return (
-    <Theme>
+    <ContainerApp>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
@@ -103,23 +105,8 @@ export const Pharmaco = () => {
             ),
           }}
         />
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button variant="text" color="default" disabled>
-              Back
-            </Button>
-          </Link>
-          <Button variant="contained" color="primary" type="submit">
-            Next
-          </Button>
-        </div>
+        <FooterActions isDisable/>
       </form>
-    </Theme>
+    </ContainerApp>
   );
 };
