@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm, FormActions } from "../context/FormContext";
 import { Theme } from "./../Components/Theme";
+import axios from "axios";
 
 export const Laboratory = () => {
 
@@ -28,6 +29,29 @@ export const Laboratory = () => {
 
   const handleNextStep = () => {
     console.table({ codigoLote, quantidadeFarmaco, pesoTotal, listaChaveFarmaco});
+    //2. codar aqui
+    const timeElapsed = Date.now();
+    const today = new Date(timeElapsed);
+    var datetimenow = today.toLocaleDateString() + " " + today.toLocaleTimeString();
+    var data = JSON.stringify({"channel":"pucchannel","chaincode":"oabcs-medicine-puc","chaincodeVer":"v2","method":"addLoteLabs","args":[codigoLote,datetimenow,quantidadeFarmaco,pesoTotal,listaChaveFarmaco]});
+
+    var config = {
+      method: 'post',
+      url: 'https://blockhubiteam-ladcsteam-iad.blockchain.ocp.oraclecloud.com:7443/restproxy/bcsgw/rest/v1/transaction/invocation',
+      headers: { 
+        'Authorization': 'Basic cGVkcm8uYmxvY2tjaGFpbjpCbG9jayYxMjQ0MjkxMg==', 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+
+    axios(config)
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
     dispatch(
       {
         type: FormActions.setValidationStepLaboratory,
