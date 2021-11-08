@@ -2,8 +2,9 @@ import { Button, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm, FormActions } from "../context/FormContext";
-import { Theme } from "../Components/Theme";
 import axios from "axios";
+import { ContainerApp } from "../Components/ContainerApp";
+import { FooterActions } from "../Components/FooterActions";
 
 export const WeightController = () => {
   const [codigoPesoValidacao, setCodigoValidacao] = useState("");
@@ -57,7 +58,7 @@ export const WeightController = () => {
   };
 
   return (
-    <Theme>
+    <ContainerApp>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
@@ -102,23 +103,8 @@ export const WeightController = () => {
           required
           type="text"
         />
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Link to="/packgingsystem" style={{ textDecoration: "none" }}>
-            <Button variant="text" color="default">
-              Back
-            </Button>
-          </Link>
-          <Button variant="contained" color="primary" type="submit">
-            Next
-          </Button>
-        </div>
+        <FooterActions path={"/packgingsystem"} />
       </form>
-    </Theme>
+    </ContainerApp>
   );
 };

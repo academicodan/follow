@@ -2,8 +2,9 @@ import { Button, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm, FormActions } from "../context/FormContext";
-import { Theme } from "./../Components/Theme";
 import axios from "axios";
+import { ContainerApp } from "../Components/ContainerApp";
+import { FooterActions } from "../Components/FooterActions";
 
 export const Distributor = () => {
   const [distribuidora, setDistribuidora] = useState("");
@@ -49,18 +50,25 @@ export const Distributor = () => {
       console.log(error);
     });
     history.push('/final')
+
+    dispatch({
+      type: FormActions.setCurrentStep,
+      payload: 7,
+    });
+
+    alert('Finalizando sessão')
+    history.push('/')
   };
 
   return (
-    <Theme>
+    <ContainerApp>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
           handleNextStep();
         }}
-      >
+      >          
         <TextField
-          // defaultValue={null}
           value={distribuidora}
           onChange={(ev) => setDistribuidora(ev.target.value)}
           id="distribuidora"
@@ -74,7 +82,6 @@ export const Distributor = () => {
         />
 
         <TextField
-          // defaultValue={null}
           value={codigoLoteDistribuidora}
           onChange={(ev) => setCodigoLoteDistribuidora(ev.target.value)}
           id="codigo-lote-distribuidora"
@@ -86,23 +93,8 @@ export const Distributor = () => {
           required
           type="text"
         />
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Link to="/tests" style={{ textDecoration: "none" }}>
-            <Button variant="text" color="default">
-              Back
-            </Button>
-          </Link>
-          <Button variant="contained" color="primary" type="submit">
-            Finish
-          </Button>
-        </div>
+      <FooterActions path={"/tests"} isFinish/>
       </form>
-    </Theme>
+    </ContainerApp>
   );
 };

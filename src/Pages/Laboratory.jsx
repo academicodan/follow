@@ -2,8 +2,9 @@ import { Button, InputAdornment, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useForm, FormActions } from "../context/FormContext";
-import { Theme } from "./../Components/Theme";
 import axios from "axios";
+import { ContainerApp } from "../Components/ContainerApp";
+import { FooterActions } from "../Components/FooterActions";
 
 export const Laboratory = () => {
 
@@ -62,7 +63,7 @@ export const Laboratory = () => {
   };
 
   return (
-    <Theme>
+    <ContainerApp>
       <form
         onSubmit={(ev) => {
           ev.preventDefault();
@@ -125,23 +126,8 @@ export const Laboratory = () => {
             ),
           }}
         />
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Button variant="text" color="default">
-              Back
-            </Button>
-          </Link>
-          <Button variant="contained" color="primary" type="submit">
-            Next
-          </Button>
-        </div>
+        <FooterActions path={"/"}/>
       </form>
-    </Theme>
+    </ContainerApp>
   );
 };
