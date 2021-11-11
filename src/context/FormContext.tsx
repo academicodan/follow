@@ -9,7 +9,8 @@ type State = {
   validationStepFactory: boolean,
   validationStepPackgingSystem: boolean,
   validationStepWeightController: boolean,
-  validationStepTests: boolean
+  validationStepTests: boolean,
+  codeSearchBlockchain: string,
 
   codigoChaveFarmaco: string,
   // tipoFarmaco: string,
@@ -62,6 +63,7 @@ const initialData: State = {
   validationStepTests: false,
   validationStepWeightController: false,
   codigoChaveFarmaco: "",
+  codeSearchBlockchain: "",
   // tipoFarmaco: "",
   // pesoFarmaco: "",
   // codigoLote: "",
@@ -100,6 +102,7 @@ export enum FormActions {
   setValidationStepWeightController,
   setValidationStepTests,
   setCodigoChaveFarmaco,
+  setCodeSearchBlockchain
   // setTipoFarmaco,
   // setPesoFarmaco,
   // setCodigoLote,
@@ -143,6 +146,8 @@ const formReducer = (state: State, action: Action) => {
       return { ...state, validationStepWeightController: action.payload }
     case FormActions.setValidationStepTests:
       return { ...state, validationStepTests: action.payload }
+    case FormActions.setCodeSearchBlockchain:
+      return{ ...state, codeSearchBlockchain: action.payload }
     default: 
       return state;
   }

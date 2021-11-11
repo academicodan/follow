@@ -2,7 +2,7 @@ import { IconButton} from "@material-ui/core";
 import NavigateNextOutlinedIcon from '@material-ui/icons/NavigateNextOutlined';
 import NavigateBeforeOutlinedIcon from '@material-ui/icons/NavigateBeforeOutlined';
 import { Link } from "react-router-dom";
-import { DoneOutlined, Height } from "@material-ui/icons";
+import { DoneOutlined } from "@material-ui/icons";
 
 export const FooterActions = ({path, isDisable, isFinish}) => {
   return (
