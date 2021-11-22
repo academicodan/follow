@@ -49,13 +49,11 @@ export const Distributor = () => {
     .catch(function (error) {
       console.log(error);
     });
-    history.push('/final')
 
     dispatch({
       type: FormActions.setCurrentStep,
       payload: 7,
     });
-
     alert('Finalizando sessão')
     history.push('/')
   };

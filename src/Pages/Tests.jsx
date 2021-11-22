@@ -72,7 +72,6 @@ export const Tests = () => {
         }}
       >
         <TextField
-          defaultValue={null}
           value={codigoTeste}
           onChange={(ev) => setCodigoTeste(ev.target.value)}
           id="codigo-teste"
@@ -86,7 +85,6 @@ export const Tests = () => {
         />
 
         <TextField
-          defaultValue={null}
           value={codigoPesoValidado}
           onChange={(ev) => setCodigoPesoValidado(ev.target.value)}
           id="codigo-peso-validado"
@@ -100,7 +98,6 @@ export const Tests = () => {
         />
 
         <TextField
-          defaultValue={null}
           value={resultadoTeste}
           onChange={(ev) => setResultadoTeste(ev.target.value)}
           id="resultado-teste"

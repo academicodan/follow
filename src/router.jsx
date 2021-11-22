@@ -6,7 +6,8 @@ import { PackgingSystem } from "./Pages/PackgingSystem";
 import { WeightController } from "./Pages/WeightController";
 import { Tests } from "./Pages/Tests";
 import { Distributor } from "./Pages/Distributor";
-import { TraceSimulator } from "./Pages/TraceSimulator";
+import { SearchTrackingSimulator} from "./Pages/SearchTrackingSimulator";
+import { TrackingSimulator } from './Pages/TrackingSimulator'
 
 export const Router = () => {
   return (
@@ -18,7 +19,8 @@ export const Router = () => {
         <Route path="/weightcontroller" component={WeightController} />
         <Route path="/tests" component={Tests} />
         <Route path="/distributor" component={Distributor} />
-        <Route path="/tracesimulator" component={TraceSimulator} />
+        <Route path="/searchTrackingSimulator" component={SearchTrackingSimulator} />
+        <Route path="/trackingSimulator" component={TrackingSimulator} />
     </BrowserRouter>
   );
 };
