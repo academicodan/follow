@@ -29,11 +29,6 @@ export const PackgingSystem = () => {
   }, []);
 
   
-
-  // Colunas: Id, Codigo Lote, Tipo, Quantidade embalagem, Peso     action
-  //          2     2345  7    Cloro            7           12Kg       (*)
-   //          2     2345  7    Cloro            7           12Kg
-
   const handleNextStep = () => {
     console.table({
       codigoLoteEmbalagens,

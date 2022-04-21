@@ -9,6 +9,7 @@ import { Distributor } from "./Pages/Distributor";
 import { SearchTrackingSimulator} from "./Pages/SearchTrackingSimulator";
 import { TrackingSimulator } from './Pages/TrackingSimulator'
 import { TableTransactions } from "./Pages/TableTransactions";
+import { DetailsTableTransactions } from "./Components/DetailsTableTransactions";
 
 export const Router = () => {
   return (
@@ -23,6 +24,7 @@ export const Router = () => {
         <Route path="/searchTrackingSimulator" component={SearchTrackingSimulator} />
         <Route path="/trackingSimulator" component={TrackingSimulator} />
         <Route path="/tableTransactions" component={TableTransactions} />
+        <Route path="/detailsTableTransactions" component={DetailsTableTransactions} />
     </BrowserRouter>
   );
 };
