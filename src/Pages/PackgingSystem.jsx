@@ -28,6 +28,7 @@ export const PackgingSystem = () => {
     }
   }, []);
 
+  
   const handleNextStep = () => {
     console.table({
       codigoLoteEmbalagens,
