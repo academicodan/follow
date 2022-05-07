@@ -1,8 +1,6 @@
 import { ContainerApp } from "../../Components/ContainerApp";
 import MaterialTable from "material-table";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Link, Route } from "react-router-dom";
-import { DetailsTableTransactions } from "../../Components/DetailsTableTransactions/index";
 
 const data = [
   {
@@ -60,7 +58,7 @@ export const TableTransactions = () => {
   return (
     <ContainerApp notStep>
       <MaterialTable
-        title={"Table transections"}
+        title={"Sequencia de processsos"}
         data={listTransactions}
         columns={columns}
         style={{ width: "100%" }}
@@ -73,7 +71,7 @@ export const TableTransactions = () => {
             tooltip: "Datails",
             onClick: (event, rowData) => {
               console.log(rowData.codigoLote);
-              window.location.href = "/detailsTableTransactions?codigolote="+rowData.codigoLote
+              window.location.href = "/tabPanelDetails?codigolote="+rowData.codigoLote
             },
           },
         ]}
