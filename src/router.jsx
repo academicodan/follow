@@ -10,6 +10,7 @@ import { SearchTrackingSimulator} from "./Pages/SearchTrackingSimulator";
 import { TrackingSimulator } from './Pages/TrackingSimulator'
 import { TableTransactions } from "./Pages/TableTransactions";
 import { DetailsTableTransactions } from "./Components/DetailsTableTransactions";
+import { TabPanelDetails } from "./Components/TabPanelDetails";
 
 export const Router = () => {
   return (
@@ -25,6 +26,7 @@ export const Router = () => {
         <Route path="/trackingSimulator" component={TrackingSimulator} />
         <Route path="/tableTransactions" component={TableTransactions} />
         <Route path="/detailsTableTransactions" component={DetailsTableTransactions} />
+        <Route path="/tabPanelDetails" component={TabPanelDetails}   />
     </BrowserRouter>
   );
 };
