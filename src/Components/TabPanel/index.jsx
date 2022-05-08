@@ -1,3 +1,5 @@
+import { TabPanelStyled } from './TabPanel.styled'
+
 export const TabPanel = ({ children, activeTab, index }) => {
-  return <div hidden={activeTab !== index}>{children}</div>;
-};
+    return <TabPanelStyled hidden={activeTab !== index}>{children}</TabPanelStyled>
+}
