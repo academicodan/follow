@@ -1,6 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeaderTabsContainer = styled.div`
-display: flex;
-padding: 12px 12px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
 `
