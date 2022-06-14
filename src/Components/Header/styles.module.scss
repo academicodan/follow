@@ -3,7 +3,7 @@
   height: 6.5rem;
   display: flex;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 2rem 2rem;
 }
 
 .typography {
@@ -11,14 +11,18 @@
 }
 
 .displayLinks {
+  display: flex;
+  align-items: center;
   margin-left: auto;
+  gap: 1rem;
 }
 
 .link {
   text-decoration: none;
-  margin-left: 2rem;
+  color:  #AAAAAF;
+
 }
+
 .logo {
-  // padding: 10px 10px;
   width: 8rem;
 }

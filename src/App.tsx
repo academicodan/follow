@@ -1,5 +1,5 @@
 import React from "react";
-import { FormProvider } from "./context/FormContext";
+import { FormProvider } from "./Context/FormContext";
 import { Router } from "./router";
 // import '../src/styles/global.scss'
 import './App.scss'
