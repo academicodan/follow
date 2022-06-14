@@ -1,6 +1,5 @@
 import MaterialTable from 'material-table'
 import { useEffect, useState } from 'react'
-// import { ContainerApp } from "../ContainerApp";
 import { ContainerDetails } from '../ContainerDetails'
 
 const rowData1 = [

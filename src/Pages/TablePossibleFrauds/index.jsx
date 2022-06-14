@@ -1,8 +1,10 @@
 import { ContainerApp } from '../../Components/ContainerApp'
 import MaterialTable from 'material-table'
 import { useEffect, useState } from 'react'
-import { Dialog } from '@material-ui/core'
+import { Dialog, Tooltip } from '@material-ui/core'
 import QRCode from 'qrcode'
+import { rowData } from '../../General/rowData'
+import ReportIcon from '@material-ui/icons/ReportProblemOutlined'
 
 const data = [
     {
@@ -16,7 +18,7 @@ const data = [
         id: '2',
         codigoLote: '12346',
         tipo: 'Cloro',
-        quantEmbalagem: '7',
+        quantEmbalagem: null,
         peso: 14,
     },
     {
@@ -35,15 +37,14 @@ const data = [
     },
     {
         id: '5',
-        codigoLote: '12349',
-        tipo: 'Cloro',
-        quantEmbalagem: '7',
-        peso: 14,
+        codigoLote: '55555',
+        tipo: 'Zinco',
+        quantEmbalagem: null,
+        peso: null,
     },
 ]
 
-// Is possible convert id or data(number) in status
-export const TableTransactions = () => {
+export const TablePossibleFraudes = () => {
     const [listTransactions, setListTransactions] = useState()
     const [open, setOpen] = useState(false)
     const [imgPath, setImgPath] = useState('')
@@ -95,9 +96,32 @@ export const TableTransactions = () => {
         { title: 'Id', field: 'id' },
         { title: 'Codigo Lote', field: 'codigoLote' },
         { title: 'Tipo', field: 'tipo' },
-        { title: 'Quant. Embalagem', field: 'quantEmbalagem' },
-        { title: 'Peso', field: 'peso' },
+        {
+            title: 'Quant. Embalagem',
+            field: 'quantEmbalagem',
+            render: (rowData) =>
+                rowData.quantEmbalagem ? (
+                    rowData.quantEmbalagem
+                ) : (
+                    <Tooltip title="Possible Fraud in this process">
+                        <ReportIcon color="error" />
+                    </Tooltip>
+                ),
+        },
+        {
+            title: 'Peso',
+            field: 'peso',
+            render: (rowData) =>
+                rowData.peso ? (
+                    rowData.peso
+                ) : (
+                    <Tooltip title="Possible Fraud in this process">
+                        <ReportIcon color="error" />
+                    </Tooltip>
+                ),
+        },
     ]
+
     return (
         <ContainerApp notStep>
             <MaterialTable
