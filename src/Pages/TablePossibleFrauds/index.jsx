@@ -3,7 +3,6 @@ import MaterialTable from 'material-table'
 import { useEffect, useState } from 'react'
 import { Dialog, Tooltip } from '@material-ui/core'
 import QRCode from 'qrcode'
-import { rowData } from '../../General/rowData'
 import ReportIcon from '@material-ui/icons/ReportProblemOutlined'
 
 const data = [
