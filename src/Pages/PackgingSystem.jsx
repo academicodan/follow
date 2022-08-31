@@ -1,3 +1,4 @@
+import React from "react"
 import { Button, InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
@@ -5,6 +6,24 @@ import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
+import {
+    URL_INVOCATION,
+    URL_QUERY,
+    CHANNEL,
+    CHAINCODE_NAME,
+    CHAINCODE_VER,
+    ADD_LOCAL_FARMACO,
+    ADD_CHAVE_FARMACO,
+    ADD_ITEM_FARMACO,
+    ADD_LOTE_LABS,
+    ADD_ITEM_PROCESSADO,
+    ADD_ITEM_EMBALADO,
+    ADD_ITEM_PESO_VALIDADO,
+    ADD_ITEM_TESTADO,
+    ADD_ITEM_DISTRIBUIDO,
+    QUERY_EVENT,
+    AUTH_BASE64
+} from '../General/blockchainVars'
 
 export const PackgingSystem = () => {
     const [codigoLoteEmbalagens, setCodigoLoteEmbalagens] = useState('')
@@ -38,10 +57,10 @@ export const PackgingSystem = () => {
         const today = new Date(timeElapsed)
         var datetimenow = today.toLocaleDateString() + ' ' + today.toLocaleTimeString()
         var data = JSON.stringify({
-            channel: 'pucchannel',
-            chaincode: 'oabcs-medicine-puc',
-            chaincodeVer: 'v2',
-            method: 'addItemEmbalado',
+            channel: CHANNEL,
+            chaincode: CHAINCODE_NAME,
+            chaincodeVer: CHAINCODE_VER,
+            method: ADD_ITEM_EMBALADO,
             args: [
                 codigoLoteEmbalagens,
                 datetimenow,
@@ -53,9 +72,9 @@ export const PackgingSystem = () => {
 
         var config = {
             method: 'post',
-            url: 'https://blockhubiteam-ladcsteam-iad.blockchain.ocp.oraclecloud.com:7443/restproxy/bcsgw/rest/v1/transaction/invocation',
+            url: URL_INVOCATION,
             headers: {
-                Authorization: 'Basic cGVkcm8uYmxvY2tjaGFpbjpCbG9jayYxMjQ0MjkxMg==',
+                Authorization: AUTH_BASE64,
                 'Content-Type': 'application/json',
             },
             data: data,

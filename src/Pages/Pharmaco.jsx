@@ -1,3 +1,4 @@
+import React from "react"
 import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -5,6 +6,7 @@ import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
+import { ADD_ITEM_FARMACO, AUTH_BASE64, CHAINCODE_NAME, CHAINCODE_VER, CHANNEL, URL_INVOCATION } from "../General/blockchainVars"
 
 export const Pharmaco = () => {
     const [codigoChaveFarmaco, setCodigoChaveFarmaco] = useState('')
@@ -28,18 +30,18 @@ export const Pharmaco = () => {
         const today = new Date(timeElapsed)
         var datetimenow = today.toLocaleDateString() + ' ' + today.toLocaleTimeString()
         var data = JSON.stringify({
-            channel: 'pucchannel',
-            chaincode: 'oabcs-medicine-puc',
-            chaincodeVer: 'v2',
-            method: 'addItemFarmaco',
+            channel: CHANNEL,
+            chaincode: CHAINCODE_NAME,
+            chaincodeVer: CHAINCODE_VER,
+            method: ADD_ITEM_FARMACO,
             args: [codigoChaveFarmaco, datetimenow, tipo, peso],
         })
 
         var config = {
             method: 'post',
-            url: 'https://blockhubiteam-ladcsteam-iad.blockchain.ocp.oraclecloud.com:7443/restproxy/bcsgw/rest/v1/transaction/invocation',
+            url: URL_INVOCATION,
             headers: {
-                Authorization: 'Basic cGVkcm8uYmxvY2tjaGFpbjpCbG9jayYxMjQ0MjkxMg==',
+                Authorization: AUTH_BASE64,
                 'Content-Type': 'application/json',
             },
             data: data,

@@ -1,3 +1,4 @@
+import React from "react"
 import MaterialTable from 'material-table'
 import { TabPanel } from '../TabPanel'
 import { PanelViewStyled } from './PanelView.styled'

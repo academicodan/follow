@@ -1,3 +1,4 @@
+import React from "react"
 import {
     Button,
     Divider,
@@ -7,7 +8,7 @@ import {
     Typography,
 } from '@material-ui/core'
 import { MoreVert } from '@material-ui/icons'
-import * as React from 'react'
+
 import { Link, useHistory } from 'react-router-dom'
 
 import style from './styles.module.scss'
