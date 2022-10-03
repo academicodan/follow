@@ -36,7 +36,7 @@ var data = [];
         "chaincodeVer": CHAINCODE_VER,
         "method": QUERY_EVENT,
         "args": [
-        "{\"selector\":{\"CodigoLoteEmbalagens\":\"lote123\"}}"
+        "{\"selector\":{\"Embalagem\":\"*\"}}" //get em todas as embalagens contidas na blockchain
         ]
     });
     
@@ -103,6 +103,7 @@ export const TableTransactions = () => {
         //loading = true;
         const response = await axios(config);
         console.log(response.data.result);
+        data = [];
         for(var i=0; i < (response.data.result.payload.length);i++){
             console.log((i+1)+"/"+response.data.result.payload.length);
             /**LEMBRAR DE EDITAR O TIPO DE OBJETO PARA A ETAPA DE EMBALAGEM (PRECISA FAZER UM GET NO SMARTCONTRACT PARA ISSO) */

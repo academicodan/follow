@@ -1,9 +1,9 @@
 /**
- *
+ *16.14.2
  */
- package main
+ package shim
 
- import (''
+ import (
 	 "bytes"
 	 "crypto/ecdsa"
 	 "crypto/x509"
@@ -11,8 +11,13 @@
 	 "fmt"
 	 "math/big"
 	 
-	 "github.com/hyperledger/fabric/core/chaincode/shim"
-	 sc "github.com/hyperledger/fabric/protos/peer"
+	 
+	"github.com/hyperledger/fabric-chaincode-go/shim"
+	sc "github.com/hyperledger/fabric-protos-go/peer"
+	 //"github.com/hyperledger/fabric-chaincode-go/shim"
+	 //sc "github.com/hyperledger/fabric-protos-go/peer"
+
+	 "google.golang.org/grpc/keepalive"
  )
  
  // Define the Smart Contract structure
@@ -63,6 +68,7 @@ type ItemProcessado struct{
 	Tipo string `json:"Tipo"`
 	QuantidadeEmbalagens string `json:"QuantidadePacotes"`
 	Peso string `json:"Peso"` //kg
+	Embalagem string `json:"Embalagem"` // utilizado para dar get em todas as embalagens
  }
 
 //etapa 7. pesar o item e se validado como OK, enviar para os testes microbiológicos (validacão peso -> testes microbiologicos)
@@ -444,7 +450,9 @@ func (s *SmartContract) addItemEmbalado(APIstub shim.ChaincodeStubInterface) sc.
 		return shim.Error("Invalid value for parameter Peso.")
 	}
 
-	   errorMsg := registerItemEmbalado(APIstub,CodigoLoteEmbalagens,DataRegistro,Tipo,QuantidadeEmbalagens,Peso)
+	Embalagem := "*"
+
+	   errorMsg := registerItemEmbalado(APIstub,CodigoLoteEmbalagens,DataRegistro,Tipo,QuantidadeEmbalagens,Peso,Embalagem)
 	   if errorMsg != "" {
 		   erromsg := "Erro no segundo err: "+errorMsg;
 		   return shim.Error(erromsg)
@@ -454,10 +462,10 @@ func (s *SmartContract) addItemEmbalado(APIstub shim.ChaincodeStubInterface) sc.
 	return shim.Success(nil);
 }
 
-func registerItemEmbalado(APIstub shim.ChaincodeStubInterface, codigoloteemb string, dataRegistro string, tipo string, quantidadeemb string, peso string) (string) {
+func registerItemEmbalado(APIstub shim.ChaincodeStubInterface, codigoloteemb string, dataRegistro string, tipo string, quantidadeemb string, peso string, embalagem string) (string) {
 	//time1 := time.Now()
 	//time1 := "tempo"
-	newPosition := ItemEmbalado{CodigoLoteEmbalagens: codigoloteemb, DataRegistro: dataRegistro, Tipo: tipo, QuantidadeEmbalagens: quantidadeemb, Peso: peso }
+	newPosition := ItemEmbalado{CodigoLoteEmbalagens: codigoloteemb, DataRegistro: dataRegistro, Tipo: tipo, QuantidadeEmbalagens: quantidadeemb, Peso: peso, Embalagem: embalagem }
 	positionEncoded, _ := json.Marshal(newPosition)
 	err := APIstub.PutState(APIstub.GetTxID(), positionEncoded)
 	if err != nil {

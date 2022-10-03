@@ -2,64 +2,64 @@ import React from "react"
 import { Tooltip } from '@material-ui/core'
 import ReportIcon from '@material-ui/icons/ReportProblemOutlined'
 
+//FINALIZADO
 const farmacos = [
-    { title: 'Chave Farmaco', field: 'column1' },
-    { title: 'Data Registro', field: 'column2' },
-    { title: 'Tipo', field: 'column3' },
-    { title: 'Peso', field: 'column4' },
+    { title: 'Chave Farmaco', field: 'codigoChaveFarmaco' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Tipo', field: 'tipo' },
+    { title: 'Peso', field: 'peso' },
 ]
 
+//FINALIZADO
 const laboratorio = [
-    { title: 'Código Lote', field: 'column6' },
-    { title: 'Data Registro', field: 'column7' },
-    { title: 'Quantidade fármacos', field: 'column8' },
-    { title: 'Peso Total', field: 'column9' },
-    { title: 'Listagem de chaves de fármacos', field: 'column10' },
+    { title: 'Código Lote', field: 'codigoLote' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Quantidade fármacos', field: 'quantFarmacos' },
+    { title: 'Peso Total', field: 'peso' },
+    { title: 'Listagem de chaves de fármacos', field: 'listaChaveFarmacos' },
 ]
+
+//FINALIZADO
 const fabrica = [
-    { title: 'Código Lote', field: 'column11' },
-    { title: 'Data Registro', field: 'column12' },
-    { title: 'Tipo', field: 'column13' },
-    { title: 'Quantidade de Pacotes', field: 'column14' },
-    { title: 'Peso', field: 'column15' },
+    { title: 'Código Lote', field: 'codigoLote' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Tipo', field: 'tipo' },
+    { title: 'Quantidade de Pacotes', field: 'quantPacotes' },
+    { title: 'Peso', field: 'peso' },
 ]
+
+//FINALIZADO
 const embalagens = [
-    { title: 'Código Lote', field: 'column16' },
-    { title: 'Data de Registro', field: 'column17' },
-    { title: 'Tipo', field: 'column18' },
-    {
-        title: 'Quantidade Embalagens',
-        field: 'column19',
-        render: (rowData) =>
-            rowData.column19 ? (
-                rowData.column19
-            ) : (
-                <Tooltip title="Registration not carried out">
-                    <ReportIcon color="error" />
-                </Tooltip>
-            ),
-    },
-    { title: 'Peso', field: 'column20' },
+    { title: 'Código Lote', field: 'codigoLote' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Tipo', field: 'tipo' },
+    { title: 'Quantidade de Pacotes', field: 'quantPacotes' },
+    { title: 'Peso', field: 'peso' },
 ]
+
+//FINALIZADO
 const controladoriaDePeso = [
-    { title: 'Código Validação', field: 'column21' },
-    { title: 'Data Registro', field: 'column22' },
-    { title: 'Código Validado', field: 'column23' },
-    { title: 'Resultado', field: 'column24' },
+    { title: 'Código Validação', field: 'codigoPesoValidacao' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Código Validado', field: 'codigoLoteValidado' },
+    { title: 'Resultado', field: 'resultado' },
 ]
+
+//FINALIZADO
 const testes = [
-    { title: 'Código Teste', field: 'column25' },
-    { title: 'Data Registro', field: 'column26' },
-    { title: 'Código Validado', field: 'column27' },
-    { title: 'Resultado', field: 'column28' },
-    { title: 'Distribuidora de Destino', field: 'column29' },
+    { title: 'Código Teste', field: 'codigoTeste' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Código Validado', field: 'codigoPesoValidado' },
+    { title: 'Resultado', field: 'resultado' },
+    { title: 'Distribuidora de Destino', field: 'distribuidoraDestino' },
 ]
+
+//PENDENTE
 const distribuidora = [
     { title: 'Codigo Lote Distribuidora', field: 'column30' },
     { title: 'Data Registro', field: 'column31' },
     { title: 'Distribuidora', field: 'column32' },
 ]
-
 export const columns = [
     farmacos,
     laboratorio,
