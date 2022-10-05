@@ -1,5 +1,5 @@
-import React from "react"
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { Laboratory } from './Pages/Laboratory'
 import { Pharmaco } from './Pages/Pharmaco'
 import { Factory } from './Pages/Factory'
@@ -13,11 +13,13 @@ import { TableTransactions } from './Pages/TableTransactions'
 import { DetailsTableTransactions } from './Components/DetailsTableTransactions'
 import { TabPanelDetails } from './Components/TabPanelDetails'
 import { TablePossibleFraudes } from './Pages/TablePossibleFrauds'
+import LandingPage from './Pages/LandingPage'
 
 export const Router = () => {
     return (
         <BrowserRouter>
-            <Route path="/" exact component={Pharmaco} />
+            <Route path="/" exact component={LandingPage} />
+            <Route path="/pharmaco" exact component={Pharmaco} />
             <Route path="/laboratory" component={Laboratory} />
             <Route path="/factory" component={Factory} />
             <Route path="/packgingsystem" component={PackgingSystem} />
