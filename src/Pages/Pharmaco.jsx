@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
@@ -6,7 +6,14 @@ import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
-import { ADD_ITEM_FARMACO, AUTH_BASE64, CHAINCODE_NAME, CHAINCODE_VER, CHANNEL, URL_INVOCATION } from "../General/blockchainVars"
+import {
+    ADD_ITEM_FARMACO,
+    AUTH_BASE64,
+    CHAINCODE_NAME,
+    CHAINCODE_VER,
+    CHANNEL,
+    URL_INVOCATION,
+} from '../General/blockchainVars'
 
 export const Pharmaco = () => {
     const [codigoChaveFarmaco, setCodigoChaveFarmaco] = useState('')
@@ -21,7 +28,7 @@ export const Pharmaco = () => {
             type: FormActions.setCurrentStep,
             payload: 0,
         })
-    }, [])
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({ codigoChaveFarmaco, tipo, peso })

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from 'react'
 import {
     Button,
     Divider,
@@ -12,9 +12,11 @@ import { MoreVert } from '@material-ui/icons'
 import { Link, useHistory } from 'react-router-dom'
 
 import style from './styles.module.scss'
+import { Context } from '../../Context/AuthContext'
 
 export const Header = ({ children }) => {
     const [anchorEl, setAnchorEl] = React.useState(null)
+    const { handleLogaut } = useContext(Context)
     const open = Boolean(anchorEl)
 
     const history = useHistory()
@@ -23,7 +25,6 @@ export const Header = ({ children }) => {
         setAnchorEl(event.currentTarget)
     }
     const handleClose = () => {
-        history.push('/tablePossibleFrauds')
         setAnchorEl(null)
     }
 
@@ -60,7 +61,10 @@ export const Header = ({ children }) => {
                 transformOrigin={{ horizontal: 'center', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
             >
-                <MenuItem onClick={handleClose}>Possiveis Fraudes do Processo</MenuItem>
+                <MenuItem onClick={() => history.push('/tablePossibleFrauds')}>
+                    Possiveis Fraudes do Processo
+                </MenuItem>
+                <MenuItem onClick={handleLogaut}>Sair</MenuItem>
             </Menu>
         </>
     )

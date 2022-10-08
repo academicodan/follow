@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { Button, InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
@@ -22,7 +22,7 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../General/blockchainVars'
 
 export const Laboratory = () => {
@@ -31,19 +31,23 @@ export const Laboratory = () => {
     const [pesoTotal, setPesoTotal] = useState('')
     const [listaChaveFarmaco, setListaChaveFarmaco] = useState('')
 
-    const history = useHistory()
+    // const history = useHistory()
     const { state, dispatch } = useForm()
 
     useEffect(() => {
-        console.log(state.validationStepPharmaco)
-        if (state.validationStepPharmaco) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 1,
-            })
-        } else {
-            history.goBack()
-        }
+        // console.log(state.validationStepPharmaco)
+        // if (state.validationStepPharmaco) {
+        //     dispatch({
+        //         type: FormActions.setCurrentStep,
+        //         payload: 1,
+        //     })
+        // } else {
+        //     history.goBack()
+        // }
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 1,
+        })
     }, [])
 
     const handleNextStep = () => {
@@ -83,11 +87,11 @@ export const Laboratory = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        dispatch({
-            type: FormActions.setValidationStepLaboratory,
-            payload: true,
-        })
-        history.push('/factory')
+        // dispatch({
+        //     type: FormActions.setValidationStepLaboratory,
+        //     payload: true,
+        // })
+        // history.push('/factory')
     }
 
     return (
