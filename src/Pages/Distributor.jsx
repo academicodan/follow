@@ -1,7 +1,6 @@
-import React from "react"
-import { Button, TextField } from '@material-ui/core'
+import React from 'react'
+import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
@@ -22,28 +21,22 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../General/blockchainVars'
 
 export const Distributor = () => {
     const [distribuidora, setDistribuidora] = useState('')
     const [codigoLoteDistribuidora, setCodigoLoteDistribuidora] = useState('')
 
-    const { state, dispatch } = useForm()
-    const history = useHistory()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        if (state.validationStepTests) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 6,
-            })
-        } else {
-            history.push('/tests')
-        }
-    }, [])
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 6,
+        })
+    }, [dispatch])
 
-    
     const handleNextStep = () => {
         console.table({ distribuidora, codigoLoteDistribuidora })
         //7 aqui
@@ -75,13 +68,6 @@ export const Distributor = () => {
             .catch(function (error) {
                 console.log(error)
             })
-
-        dispatch({
-            type: FormActions.setCurrentStep,
-            payload: 7,
-        })
-        alert('Finalizando sessão')
-        history.push('/')
     }
 
     return (
@@ -101,7 +87,6 @@ export const Distributor = () => {
                     placeholder="Insira a Distribuidora"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -114,10 +99,9 @@ export const Distributor = () => {
                     placeholder="Insira o Código Lote Distribuidora"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
-                <FooterActions path={'/tests'} isFinish />
+                <FooterActions />
             </form>
         </ContainerApp>
     )

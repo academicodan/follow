@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { Button, InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
@@ -22,7 +22,7 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../General/blockchainVars'
 
 export const Factory = () => {
@@ -31,20 +31,14 @@ export const Factory = () => {
     const [quantidadePacotes, setQuantidadePacotes] = useState('')
     const [pesoPacote, setPesoPacote] = useState('')
 
-    const history = useHistory()
-
-    const { state, dispatch } = useForm()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        if (state.validationStepLaboratory) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 2,
-            })
-        } else {
-            history.replace('/laboratory')
-        }
-    }, [])
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 2,
+        })
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({
@@ -88,11 +82,6 @@ export const Factory = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        dispatch({
-            type: FormActions.setValidationStepFactory,
-            payload: true,
-        })
-        history.push('/packgingsystem')
     }
 
     return (
@@ -113,7 +102,6 @@ export const Factory = () => {
                     placeholder="Insira o Código Lote Fábrica"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -127,7 +115,6 @@ export const Factory = () => {
                     placeholder="Insira o Tipo Resultante"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -141,7 +128,6 @@ export const Factory = () => {
                     placeholder="Insira a Quantidade de Pacotes"
                     fullWidth
                     margin="normal"
-                    required
                     type="number"
                 />
 
@@ -155,7 +141,6 @@ export const Factory = () => {
                     placeholder="Insira o Peso do Pacote"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                     InputProps={{
                         endAdornment: (
@@ -163,7 +148,7 @@ export const Factory = () => {
                         ),
                     }}
                 />
-                <FooterActions path={'/laboratory'} />
+                <FooterActions />
             </form>
         </ContainerApp>
     )

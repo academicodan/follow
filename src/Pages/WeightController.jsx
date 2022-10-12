@@ -1,31 +1,32 @@
-import React from "react"
-import { Button, TextField } from '@material-ui/core'
+import React from 'react'
+import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
-import { ADD_ITEM_PESO_VALIDADO, AUTH_BASE64, CHAINCODE_NAME, CHAINCODE_VER, CHANNEL, URL_INVOCATION } from "../General/blockchainVars"
+import {
+    ADD_ITEM_PESO_VALIDADO,
+    AUTH_BASE64,
+    CHAINCODE_NAME,
+    CHAINCODE_VER,
+    CHANNEL,
+    URL_INVOCATION,
+} from '../General/blockchainVars'
 
 export const WeightController = () => {
     const [codigoPesoValidacao, setCodigoValidacao] = useState('')
     const [codigoLoteValidado, setCodigoLoteValidado] = useState('')
     const [resultadoPeso, setResultadoPeso] = useState('')
 
-    const history = useHistory()
-    const { state, dispatch } = useForm()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        if (state.validationStepPackgingSystem) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 4,
-            })
-        } else {
-            history.goBack()
-        }
-    }, [])
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 4,
+        })
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({ codigoPesoValidacao, codigoLoteValidado, resultadoPeso })
@@ -58,11 +59,6 @@ export const WeightController = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        dispatch({
-            type: FormActions.setValidationStepWeightController,
-            payload: true,
-        })
-        history.push('/tests')
     }
 
     return (
@@ -82,7 +78,6 @@ export const WeightController = () => {
                     placeholder="Insira o Codigo Peso Validacao"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -95,7 +90,6 @@ export const WeightController = () => {
                     placeholder="Insira o Código Lote Validado"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -108,10 +102,9 @@ export const WeightController = () => {
                     placeholder="Ex: Peso correspondente ou Peso não correspondente"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
-                <FooterActions path={'/packgingsystem'} />
+                <FooterActions />
             </form>
         </ContainerApp>
     )
