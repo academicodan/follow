@@ -25,6 +25,7 @@ console.log(urlParams.get('codigolote'))
 
 export const TabPanelDetails = () => {
     const [value, setValue] = useState(0)
+    const [isLoading, setIsLoading] = useState(true);
     const [rowsData, setRowData] = useState([])
     const [columnData, setColumnData] = useState([])
 
@@ -43,6 +44,7 @@ export const TabPanelDetails = () => {
         //Seta os dados das tabelas com os dados puxados das requisições anteriores
         setRowData([blockDataFarmacos,blockDataLoteLabs,blockDataFabrica,blockDataEmbalagens,blockDataControladoriaPeso,blockDataTestesMicro,blockDataDistribuidora])
         setColumnData(columns)
+        //setIsLoading(false);
     }
 
     useEffect(() => {
@@ -61,6 +63,7 @@ export const TabPanelDetails = () => {
             </ConatinerHeader>
             <ContainerContent>
                 <PanelView
+                    //isLoading = {isLoading}
                     activeTab={value}
                     rowData={rowsData}
                     columnData={columnData}

@@ -54,12 +54,13 @@ const testes = [
     { title: 'Distribuidora de Destino', field: 'distribuidoraDestino' },
 ]
 
-//PENDENTE
+//FINALIZADO
 const distribuidora = [
-    { title: 'Codigo Lote Distribuidora', field: 'column30' },
-    { title: 'Data Registro', field: 'column31' },
-    { title: 'Distribuidora', field: 'column32' },
+    { title: 'Codigo Lote Distribuidora', field: 'codigoLoteDistribuidora' },
+    { title: 'Data Registro', field: 'dataRegistro' },
+    { title: 'Distribuidora', field: 'distribuidora' },
 ]
+
 export const columns = [
     farmacos,
     laboratorio,

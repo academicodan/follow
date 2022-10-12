@@ -23,6 +23,13 @@ export var listaChaveFarmacosConsulta = "";
 export var codigoPesoValidadoConsulta = "";
 export var distribuidoraDestinoConsulta = "";
 
+export var possivelFraudeLoteLabs = false;
+export var possivelFraudeFarmacos = false;
+export var possivelFraudeFabrica = false;
+export var possivelFraudeValidaPeso = false;
+export var possivelFraudeTestesMicro= false;
+export var possivelFraudeDistribuidora = false;
+
 //Function para request de dados de EMBALAGEM
 export const BlockchainGetTransactionsEmbalagens = async (urlParams) => {
 
@@ -49,6 +56,7 @@ export const BlockchainGetTransactionsEmbalagens = async (urlParams) => {
     const response = await axios(configEmbalagem);
     console.log("RESULT: "+response.data.result.payload);
     var dataEmbalagens = [];
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
@@ -94,6 +102,19 @@ export const BlockchainGetTransactionsLoteLabs = async () => {
     const response = await axios(configLoteLabs);
     console.log("RESULT: "+JSON.stringify(response.data.result.payload));
     var dataLotelabs = [];
+
+    //DETECTAR POSSÍVEL FRAUDE
+    if(response.data.result.payload.length <= 0){
+        possivelFraudeLoteLabs = true;
+        dataLotelabs.push({
+            codigoLote: codigoLoteConsulta,
+            dataRegistro: "possível fraude",
+            quantFarmacos: "possível fraude",
+            peso: "possível fraude",
+            listaChaveFarmacos: "possível fraude",
+        });
+    }
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
@@ -143,6 +164,17 @@ export const BlockchainGetTransactionsFarmacos = async () => {
         const response = await axios(configFarmacos);
         console.log("RESULT: "+JSON.stringify(response.data.result.payload));
         
+        //DETECTAR POSSÍVEL FRAUDE
+        if(response.data.result.payload.length <= 0){
+            possivelFraudeFarmacos = true;
+            dataFarmacos.push({
+                codigoChaveFarmaco: listachaves[i],
+                dataRegistro: "possível fraude",
+                tipo: "possível fraude",
+                peso: "possível fraude",
+            });
+        }
+
         for(var i=0; i < (response.data.result.payload.length);i++){
             console.log((i+1)+"/"+response.data.result.payload.length);
             //Adiciona na lista todos os registros encontrados
@@ -187,6 +219,20 @@ export const BlockchainGetTransactionsFabrica = async () => {
     const response = await axios(configLoteFab);
     console.log("RESULT: "+JSON.stringify(response.data.result.payload));
     var dataLotefab = [];
+
+
+    //DETECTAR POSSÍVEL FRAUDE
+    if(response.data.result.payload.length <= 0){
+        possivelFraudeFabrica = true;
+        dataLotefab.push({
+            codigoLote: codigoLoteConsulta,
+            dataRegistro:  "possível fraude",
+            tipo:  "possível fraude",
+            quantPacotes:  "possível fraude",
+            peso:  "possível fraude",
+        });
+    }
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
@@ -229,6 +275,18 @@ export const BlockchainGetTransactionsControladoriaPeso = async () => {
     const response = await axios(configControlePeso);
     console.log("RESULT: "+JSON.stringify(response.data.result.payload));
     var dataPesoValidado = [];
+
+    //DETECTAR POSSÍVEL FRAUDE
+    if(response.data.result.payload.length <= 0){
+        possivelFraudeValidaPeso = true;
+        dataPesoValidado.push({
+            codigoPesoValidacao: "possível fraude",
+            dataRegistro: "possível fraude",
+            codigoLoteValidado: codigoLoteConsulta,
+            resultado: "possível fraude",
+        });
+    }
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
@@ -270,6 +328,20 @@ export const BlockchainGetTransactionsTestesMicro = async () => {
     const response = await axios(configTestesMicro);
     console.log("RESULT: "+JSON.stringify(response.data.result.payload));
     var dataTestesMicro = [];
+
+
+    //DETECTAR POSSÍVEL FRAUDE
+    if(response.data.result.payload.length <= 0){
+        possivelFraudeTestesMicro = true;
+        dataTestesMicro.push({
+            codigoTeste: "possível fraude",
+            dataRegistro: "possível fraude",
+            codigoPesoValidado: codigoPesoValidadoConsulta,
+            resultado: "possível fraude",
+            distribuidoraDestino: "possível fraude",
+        });
+    }
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
@@ -311,16 +383,28 @@ export const BlockchainGetTransactionsDistribuidora = async () => {
     const response = await axios(configDistribuidora);
     console.log("RESULT: "+JSON.stringify(response.data.result.payload));
     var dataDistribuidora = [];
+
+    //DETECTAR POSSÍVEL FRAUDE
+    if(response.data.result.payload.length <= 0){
+        possivelFraudeDistribuidora = true;
+        dataDistribuidora.push({
+            distribuidora: distribuidoraDestinoConsulta,
+            dataRegistro: "possível fraude",
+            codigoLoteDistribuidora: "possível fraude",
+        });
+    }
+
+
     for(var i=0; i < (response.data.result.payload.length);i++){
         console.log((i+1)+"/"+response.data.result.payload.length);
         //Adiciona na lista todos os registros encontrados
         dataDistribuidora.push({
-            codigoTeste: response.data.result.payload[i].Record.CodigoTeste,
+            distribuidora: response.data.result.payload[i].Record.Distribuidora,
             dataRegistro: response.data.result.payload[i].Record.DataRegistro,
-            codigoPesoValidado: response.data.result.payload[i].Record.CodigoPesoValidado,
-            resultado: response.data.result.payload[i].Record.Resultado,
-            distribuidoraDestino: response.data.result.payload[i].Record.DistribuidoraDestino,
+            codigoLoteDistribuidora: response.data.result.payload[i].Record.CodigoLoteDistribuidora,
         })
+
+
     }   
     //setIsLoading(false)
     return dataDistribuidora;
