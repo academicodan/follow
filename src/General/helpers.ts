@@ -74,15 +74,15 @@ export const handleAuthentication = ({ userName, password }: loginUser) => {
             } 
         case users.TESTS:
             if (password === passwords.TESTS) {
-                return { authenticated: true, route: routes.WEIGHT_CONTROLLER }
+                return { authenticated: true, route: routes.TESTS }
             } 
             else {
                 alert("Senha inválida")
                 return false
             } 
         case users.DISTRIBUTOR:
-            if (password === passwords.TESTS) {
-                return { authenticated: true, route: routes.WEIGHT_CONTROLLER }
+            if (password === passwords.DISTRIBUTOR) {
+                return { authenticated: true, route: routes.DISTRIBUTOR }
             } else {
                 alert("Senha inválida")
                 return false

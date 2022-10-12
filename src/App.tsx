@@ -21,8 +21,8 @@ const App = () =>{
         // main: '#bd41BF'
       },
       secondary: {
-        // main: '#F2858E'
-        main: '#F279A6'
+        main: '#F2858E'
+        // main: '#F279A6'
       },
       // text: {
       //   primary: '#F279A6',

@@ -1,8 +1,7 @@
-import React from "react"
+import React from 'react'
 
-import { Button, TextField } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
@@ -23,7 +22,7 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../General/blockchainVars'
 
 export const Tests = () => {
@@ -32,19 +31,14 @@ export const Tests = () => {
     const [resultadoTeste, setResultadoTeste] = useState('')
     const [distribuidoraDestino, setDistribuidoraDestino] = useState('')
 
-    const history = useHistory()
-    const { state, dispatch } = useForm()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        if (state.validationStepWeightController) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 5,
-            })
-        } else {
-            history.goBack()
-        }
-    }, [])
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 5,
+        })
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({
@@ -88,11 +82,6 @@ export const Tests = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        dispatch({
-            type: FormActions.setValidationStepTests,
-            payload: true,
-        })
-        history.push('/distributor')
     }
 
     return (
@@ -112,7 +101,6 @@ export const Tests = () => {
                     placeholder="Insira Código Teste"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -125,7 +113,6 @@ export const Tests = () => {
                     placeholder="Insira o Código Peso Validado"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -138,12 +125,10 @@ export const Tests = () => {
                     placeholder="Ex: Positivo ou Teste com falhas"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
                 <TextField
-                    defaultValue={null}
                     value={distribuidoraDestino}
                     onChange={(ev) => setDistribuidoraDestino(ev.target.value)}
                     id="distribuidora-destino"
@@ -152,10 +137,9 @@ export const Tests = () => {
                     placeholder="Insira Distribuidora Destino"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
-                <FooterActions path={'/weightcontroller'} />
+                <FooterActions />
             </form>
         </ContainerApp>
     )

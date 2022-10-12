@@ -52,7 +52,12 @@ const useStyles = makeStyles((theme) => ({
 
 const usersOptions = [
     { user: 'Farmaco', value: 'pharmaco' },
-    { user: 'Laboratorio', value: 'laboratory' },
+    { user: 'Laboratório', value: 'laboratory' },
+    { user: 'Fábrica', value: 'factory' },
+    { user: 'Sistema de embalagem', value: 'packgingsystem' },
+    { user: 'Controladoria de peso', value: 'weightcontroller' },
+    { user: 'Testes', value: 'tests' },
+    { user: 'Distribuidora', value: 'distributor' },
 ]
 
 const Login = () => {
@@ -84,7 +89,7 @@ const Login = () => {
                 className={classes.containerForm}
                 onSubmit={(e) => {
                     e.preventDefault()
-                    setUser({ user: '', password: '' })
+                    // setUser({ user: '', password: '' })
                     handleLogin(user)
                 }}
             >

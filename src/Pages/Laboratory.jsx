@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, InputAdornment, TextField } from '@material-ui/core'
+import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
@@ -31,24 +30,14 @@ export const Laboratory = () => {
     const [pesoTotal, setPesoTotal] = useState('')
     const [listaChaveFarmaco, setListaChaveFarmaco] = useState('')
 
-    // const history = useHistory()
-    const { state, dispatch } = useForm()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        // console.log(state.validationStepPharmaco)
-        // if (state.validationStepPharmaco) {
-        //     dispatch({
-        //         type: FormActions.setCurrentStep,
-        //         payload: 1,
-        //     })
-        // } else {
-        //     history.goBack()
-        // }
         dispatch({
             type: FormActions.setCurrentStep,
             payload: 1,
         })
-    }, [])
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({ codigoLote, quantidadeFarmaco, pesoTotal, listaChaveFarmaco })
@@ -87,11 +76,6 @@ export const Laboratory = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        // dispatch({
-        //     type: FormActions.setValidationStepLaboratory,
-        //     payload: true,
-        // })
-        // history.push('/factory')
     }
 
     return (
@@ -111,7 +95,6 @@ export const Laboratory = () => {
                     placeholder="Insira o Código Lote"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -124,7 +107,6 @@ export const Laboratory = () => {
                     placeholder="Insira a Qunatidade Fármaco"
                     fullWidth
                     margin="normal"
-                    required
                     type="number"
                 />
 
@@ -137,7 +119,6 @@ export const Laboratory = () => {
                     placeholder="Insira a Lista Chave Fármaco"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -150,7 +131,6 @@ export const Laboratory = () => {
                     placeholder="Insira o peso total"
                     fullWidth
                     margin="normal"
-                    required
                     type="number"
                     InputProps={{
                         endAdornment: (
@@ -158,7 +138,7 @@ export const Laboratory = () => {
                         ),
                     }}
                 />
-                <FooterActions path={'/'} />
+                <FooterActions />
             </form>
         </ContainerApp>
     )

@@ -1,7 +1,6 @@
 import React from 'react'
 import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
@@ -20,9 +19,7 @@ export const Pharmaco = () => {
     const [tipo, setTipo] = useState('')
     const [peso, setPeso] = useState('')
 
-    const history = useHistory()
     const { dispatch } = useForm()
-
     useEffect(() => {
         dispatch({
             type: FormActions.setCurrentStep,
@@ -61,12 +58,6 @@ export const Pharmaco = () => {
             .catch(function (error) {
                 console.log(error)
             })
-
-        dispatch({
-            type: FormActions.setValidationStepPharmaco,
-            payload: true,
-        })
-        history.push('/laboratory')
     }
 
     return (
@@ -86,7 +77,6 @@ export const Pharmaco = () => {
                     placeholder="Insira o Código Chave Fármaco"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -99,7 +89,6 @@ export const Pharmaco = () => {
                     placeholder="Insira o Tipo"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -112,7 +101,6 @@ export const Pharmaco = () => {
                     placeholder="Insira o Peso do Fármaco"
                     fullWidth
                     margin="normal"
-                    required
                     type="number"
                     InputProps={{
                         endAdornment: (
@@ -120,7 +108,7 @@ export const Pharmaco = () => {
                         ),
                     }}
                 />
-                <FooterActions isDisable />
+                <FooterActions />
             </form>
         </ContainerApp>
     )
