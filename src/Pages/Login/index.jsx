@@ -1,8 +1,18 @@
-import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { Context } from '../../Context/AuthContext'
+import {
+    Fade,
+    FormControl,
+    IconButton,
+    InputAdornment,
+    MenuItem,
+    OutlinedInput,
+    Select,
+    Typography,
+} from '@material-ui/core'
+import { Visibility, VisibilityOff } from '@material-ui/icons'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -19,41 +29,90 @@ const useStyles = makeStyles((theme) => ({
     },
     footerButton: {
         display: 'flex',
-        justifyContent: 'end',
+        justifyContent: 'center',
+        marginTop: '1rem',
+    },
+    containerForm: {
+        width: '40%',
+    },
+    formControl: {
+        minWidth: '100%',
+    },
+    image: {
+        width: '12rem',
+    },
+    header: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '1.2rem',
+        marginBottom: '2rem',
     },
 }))
+
+const usersOptions = [
+    { user: 'Farmaco', value: 'pharmaco' },
+    { user: 'Laboratorio', value: 'laboratory' },
+]
 
 const Login = () => {
     const classes = useStyles()
     const { handleLogin } = useContext(Context)
     const [user, setUser] = useState({ user: '', password: '' })
+    const [showPassword, setShowPassword] = useState(false)
+    const [checked, setChecked] = useState(false)
+    useEffect(() => {
+        setChecked(true)
+    }, [])
 
     return (
         <div className={classes.root}>
-            <div>
-                <h2 className={classes.loginTitle}>
-                    Faça o Login para acessar o Sistema
-                </h2>
-            </div>
+            <Fade in={checked} {...(checked ? { timeout: 1500 } : {})}>
+                <div className={classes.header}>
+                    <Typography variant="h2" component="span" color="secondary">
+                        Bem-Vindo ao Follow
+                    </Typography>
+
+                    <img
+                        src="/img/follow-logo.png"
+                        alt="logo"
+                        className={classes.image}
+                    />
+                </div>
+            </Fade>
             <form
+                className={classes.containerForm}
                 onSubmit={(e) => {
                     e.preventDefault()
                     setUser({ user: '', password: '' })
                     handleLogin(user)
                 }}
             >
-                <div className={classes.containerForm}>
-                    <TextField
+                <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
+                    margin="normal"
+                    fullWidth
+                >
+                    <Select
                         value={user.user}
                         onChange={(ev) => setUser({ ...user, user: ev.target.value })}
-                        id="user-name"
-                        variant="outlined"
-                        placeholder="Usuário"
-                        fullWidth
-                        margin="normal"
-                        type="text"
-                    />
-                    <TextField
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}
+                    >
+                        <MenuItem value="">Usuario</MenuItem>
+                        {usersOptions.map((item) => {
+                            return <MenuItem value={item.value}>{item.user}</MenuItem>
+                        })}
+                    </Select>
+                </FormControl>
+                <FormControl
+                    variant="outlined"
+                    className={classes.formControl}
+                    margin="normal"
+                    fullWidth
+                >
+                    <OutlinedInput
                         value={user.password}
                         onChange={(ev) =>
                             setUser({ ...user, password: ev.target.value })
@@ -61,14 +120,30 @@ const Login = () => {
                         id="password"
                         variant="outlined"
                         placeholder="Senha"
-                        fullWidth
-                        margin="normal"
-                        type="password"
+                        type={showPassword ? 'text' : 'password'}
+                        endAdornment={
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    edge="end"
+                                >
+                                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
+                        }
                     />
-                </div>
+                </FormControl>
                 <div className={classes.footerButton}>
-                    <Button color="primary" variant="contained" type="submit">
-                        Login
+                    <Button
+                        color="primary"
+                        variant="contained"
+                        type="submit"
+                        size="large"
+                        fullWidth
+                        disabled={!user.password.length}
+                    >
+                        Acessar
                     </Button>
                 </div>
             </form>

@@ -14,7 +14,7 @@ import { Link, useHistory } from 'react-router-dom'
 import style from './styles.module.scss'
 import { Context } from '../../Context/AuthContext'
 
-export const Header = ({ children }) => {
+export const Header = ({ hasLogTransactions }) => {
     const [anchorEl, setAnchorEl] = React.useState(null)
     const { handleLogaut } = useContext(Context)
     const open = Boolean(anchorEl)
@@ -39,9 +39,11 @@ export const Header = ({ children }) => {
                 <Divider orientation="vertical" variant="middle" flexItem />
                 <Typography className={style.typography}>Follow</Typography>
                 <div className={style.displayLinks}>
-                    <Link to="/" className={style.link}>
-                        <Button variant="outlined">Registrar Transações</Button>
-                    </Link>
+                    {hasLogTransactions && (
+                        <Link to="/pharmaco" className={style.link}>
+                            <Button variant="outlined">Registrar Transações</Button>
+                        </Link>
+                    )}
                     <Link to="/tableTransactions" className={style.link}>
                         <Button variant="contained" color="primary">
                             Sequência de Processos

@@ -4,29 +4,91 @@ interface loginUser {
 }
 
 
+enum users {
+    PHARMACO = 'pharmaco',
+    LABORATORY = 'laboratory',
+    FACTORY = 'factory',
+    PACKGING_SYSTEM = 'packgingsystem',
+    WEIGHT_CONTROLLER = 'weightcontroller',
+    TESTS = 'tests',
+    DISTRIBUTOR = 'distributor',
+}
+
+enum passwords {
+    PHARMACO = 'passpharmaco',
+    LABORATORY = 'passlaboratory',
+    FACTORY = 'passfactory',
+    PACKGING_SYSTEM = 'passpackgingsystem',
+    WEIGHT_CONTROLLER = 'passweightcontroller',
+    TESTS = 'passtests',
+    DISTRIBUTOR = 'passdistributor',
+}
+
+enum routes {
+    PHARMACO = '/pharmaco',
+    LABORATORY = '/laboratory',
+    FACTORY = '/factory',
+    PACKGING_SYSTEM = '/packgingsystem',
+    WEIGHT_CONTROLLER = '/weightcontroller',
+    TESTS = '/tests',
+    DISTRIBUTOR = '/distributor',
+}
+
 export const handleAuthentication = ({ userName, password }: loginUser) => {
-
-    console.log(userName)
     switch (userName) {
-        case 'pharmaco':
-            if (password === 'passpharmaco') {
-
-                return { authenticated: true, route: '/pharmaco' }
-                // setAuthenticated(true)
-                // history.push('/pharmaco')
-            } else {
+        case users.PHARMACO :
+            if (password === passwords.PHARMACO) {
+                return { authenticated: true, route: routes.PHARMACO }
+            }  else {
+                alert("Senha inválida")
                 return false
-            }
-        case 'laboratory':
-            if (password === 'passlaboratory') {
-                // setAuthenticated(true)
-                // history.push('/laboratory')
-                return { authenticated: true, route: '/laboratory' }
+            } 
+        case users.LABORATORY:
+            if (password === passwords.LABORATORY) {
+                return { authenticated: true, route: routes.LABORATORY }
             } else {
-               return false
-            }
+                alert("Senha inválida")
+                return false
+            } 
+        case users.FACTORY:
+            if (password === passwords.FACTORY) {
+                return { authenticated: true, route: routes.FACTORY }
+            } else {
+                alert("Senha inválida")
+                return false
+            } 
+        case users.PACKGING_SYSTEM:
+            if (password === passwords.PACKGING_SYSTEM) {
+                return { authenticated: true, route: routes.PACKGING_SYSTEM }
+            } else {
+                alert("Senha inválida")
+                return false
+            } 
+        case users.WEIGHT_CONTROLLER:
+            if (password === passwords.WEIGHT_CONTROLLER) {
+                return { authenticated: true, route: routes.WEIGHT_CONTROLLER }
+            } 
+            else {
+                alert("Senha inválida")
+                return false
+            } 
+        case users.TESTS:
+            if (password === passwords.TESTS) {
+                return { authenticated: true, route: routes.WEIGHT_CONTROLLER }
+            } 
+            else {
+                alert("Senha inválida")
+                return false
+            } 
+        case users.DISTRIBUTOR:
+            if (password === passwords.TESTS) {
+                return { authenticated: true, route: routes.WEIGHT_CONTROLLER }
+            } else {
+                alert("Senha inválida")
+                return false
+            } 
         default:
-            return alert("Usuario nao encontrado")
+            return alert("Usuário inválido!")
     }
 
 

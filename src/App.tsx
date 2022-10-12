@@ -21,7 +21,8 @@ const App = () =>{
         // main: '#bd41BF'
       },
       secondary: {
-        main: '#F2858E'
+        // main: '#F2858E'
+        main: '#F279A6'
       },
       // text: {
       //   primary: '#F279A6',
@@ -29,6 +30,9 @@ const App = () =>{
       // },
 
       divider: '#2A2B36',
+    },
+    typography: {
+      fontFamily: 'Roboto'
     }
   })
   return (

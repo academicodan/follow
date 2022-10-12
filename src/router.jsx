@@ -57,9 +57,34 @@ export const Routes = () => {
             <CustomRouter exact path="/" component={Login} />
             <CustomRouter exact isPrivite path="/pharmaco" component={Pharmaco} />
             <CustomRouter exact isPrivite path="/laboratory" component={Laboratory} />
+            <CustomRouter exact isPrivite path="/factory" component={Factory} />
             <CustomRouter
                 exact
                 isPrivite
+                path="/packgingsystem"
+                component={PackgingSystem}
+            />
+            <CustomRouter
+                exact
+                isPrivite
+                path="/weightcontroller"
+                component={WeightController}
+            />
+            <CustomRouter exact isPrivite path="/tests" component={Tests} />
+            <CustomRouter exact isPrivite path="/distributor" component={Distributor} />
+            {/* <CustomRouter
+                exact
+                path="/searchTrackingSimulator"
+                component={SearchTrackingSimulator}
+            /> */}
+            {/* <CustomRouter
+                exact
+                path="/trackingSimulator"
+                component={TrackingSimulator}
+            /> */}
+            <CustomRouter exact path="/tabPanelDetails" component={TabPanelDetails} />
+            <CustomRouter
+                exact
                 path="/tablePossibleFrauds"
                 component={TablePossibleFraudes}
             />
