@@ -1,14 +1,14 @@
 import React from 'react'
 
 //URLs
-const URL ='https://blockchainpedro-3-brztechcloud01-gru.blockchain.ocp.oraclecloud.com:7443/restproxy'
+const URL ='https://blockchainpedro-3-brztechcloud01-gru.blockchain.ocp.oraclecloud.com:7443/restproxy' 
 const URL_INVOCATION = URL + '/bcsgw/rest/v1/transaction/invocation'
 const URL_QUERY = URL + '/bcsgw/rest/v1/transaction/query'
 
 //CHANNEL,CHAINCODE,CHAINCODE_VER
 const CHANNEL = 'default'
-const CHAINCODE_NAME = 'oabcs-medicine-puc'
-const CHAINCODE_VER = 'v1'
+const CHAINCODE_NAME = 'oabcs-medicine-puc-v2'
+const CHAINCODE_VER = 'v2'
 
 //Functions
 const ADD_LOCAL_FARMACO = 'addLocalFarmaco'

@@ -2,6 +2,27 @@ import React from "react"
 import MaterialTable from 'material-table'
 import { useEffect, useState } from 'react'
 import { ContainerDetails } from '../ContainerDetails'
+import axios from 'axios'
+import {
+    URL_INVOCATION,
+    URL_QUERY,
+    CHANNEL,
+    CHAINCODE_NAME,
+    CHAINCODE_VER,
+    ADD_LOCAL_FARMACO,
+    ADD_CHAVE_FARMACO,
+    ADD_ITEM_FARMACO,
+    ADD_LOTE_LABS,
+    ADD_ITEM_PROCESSADO,
+    ADD_ITEM_EMBALADO,
+    ADD_ITEM_PESO_VALIDADO,
+    ADD_ITEM_TESTADO,
+    ADD_ITEM_DISTRIBUIDO,
+    QUERY_EVENT,
+    AUTH_BASE64
+} from '../../General/blockchainVars'
+
+
 
 const rowData1 = [
     {
@@ -168,11 +189,11 @@ const rowData4 = [
 ]
 
 const columns1 = [
-    { title: 'A', field: 'column1' },
-    { title: 'B', field: 'column2' },
-    { title: 'C', field: 'column3' },
-    { title: 'D', field: 'column4' },
-    { title: 'E', field: 'column5' },
+    { title: 'A', field: 'codigoLote' },
+    { title: 'B', field: 'tipo' },
+    { title: 'C', field: 'quantPacotes' },
+    { title: 'D', field: 'peso' },
+    { title: 'E', field: 'dataRegistro' },
 ]
 
 const columns2 = [
@@ -197,16 +218,18 @@ const columns4 = [
     { title: 'T', field: 'column20' },
 ]
 
+
 export const DetailsTableTransactions = (hash) => {
     const [rowData, setRowData] = useState([])
     const [columnData, setColumnData] = useState([])
+
 
     useEffect(() => {
         const queryString = window.location.search
         const urlParams = new URLSearchParams(queryString)
         console.log(urlParams.get('codigolote'))
         setRowData([rowData1, rowData2, rowData3, rowData4])
-        setColumnData([columns1, columns2, columns3, columns4])
+        
     }, [])
 
     return (
