@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react'
 import MaterialTable from 'material-table'
 import { TabPanel } from '../TabPanel'
 import { PanelViewStyled } from './PanelView.styled'
 
-export const PanelView = ({ activeTab, rowData, columnData }) => {
+export const PanelView = ({ activeTab, rowData, columnData, isLoading }) => {
     return (
         <PanelViewStyled>
             <TabPanel activeTab={activeTab} index={0}>
@@ -15,6 +15,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={1}>
@@ -26,6 +27,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={2}>
@@ -37,6 +39,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={3}>
@@ -48,6 +51,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={4}>
@@ -59,6 +63,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={5}>
@@ -70,6 +75,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
             <TabPanel activeTab={activeTab} index={6}>
@@ -81,6 +87,7 @@ export const PanelView = ({ activeTab, rowData, columnData }) => {
                     options={{
                         paging: false,
                     }}
+                    isLoading={isLoading}
                 />
             </TabPanel>
         </PanelViewStyled>

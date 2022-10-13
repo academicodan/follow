@@ -1,11 +1,19 @@
-import React from "react"
-import { Tab, Tabs, IconButton, Badge } from '@material-ui/core'
+import React from 'react'
+import { Tab, Tabs, IconButton } from '@material-ui/core'
 import NavigateBeforeOutlinedIcon from '@material-ui/icons/NavigateBeforeOutlined'
 import { Link } from 'react-router-dom'
 import { HeaderTabsContainer } from './HeaderTabs.styled'
+import {
+    possivelFraudeFarmacos,
+    possivelFraudeLoteLabs,
+    possivelFraudeFabrica,
+    possivelFraudeValidaPeso,
+    possivelFraudeTestesMicro,
+    possivelFraudeDistribuidora,
+} from '../../General/blockchainTrackFunctions'
+import LabelIcon from '../LabelIcon'
 
 export const HeaderTabs = ({ value, handleChange }) => {
-    console.log(value)
     return (
         <HeaderTabsContainer>
             <div>
@@ -20,13 +28,76 @@ export const HeaderTabs = ({ value, handleChange }) => {
                 onChange={(e, value) => handleChange(value)}
                 textColor="secondary"
             >
-                <Tab label="Fármacos" id="0" aria-controls="0" />
-                <Tab label="Laboratórios" id="1" aria-controls="1" />
-                <Tab label="Fábrica" id="2" aria-controls="2" />
-                <Tab label="Sistema de Embalagens" id="3" aria-controls="3" />
-                <Tab label="Controladoria de Peso" id="4" aria-controls="4" />
-                <Tab label="Testes" id="5" aria-controls="5" />
-                <Tab label="Distribuidoras" id="6" aria-controls="6" />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Fármacos'}
+                            validation={possivelFraudeFarmacos}
+                        />
+                    }
+                    id="0"
+                    aria-controls="0"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Laboratórios'}
+                            validation={possivelFraudeLoteLabs}
+                        />
+                    }
+                    id="1"
+                    aria-controls="1"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Fábrica'}
+                            validation={possivelFraudeFabrica}
+                        />
+                    }
+                    id="2"
+                    aria-controls="2"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Sistema de Embalagens'}
+                            // validation={}
+                        />
+                    }
+                    id="3"
+                    aria-controls="3"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Controladoria de Peso'}
+                            validation={possivelFraudeValidaPeso}
+                        />
+                    }
+                    id="4"
+                    aria-controls="4"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Testes'}
+                            validation={possivelFraudeTestesMicro}
+                        />
+                    }
+                    id="5"
+                    aria-controls="5"
+                />
+                <Tab
+                    label={
+                        <LabelIcon
+                            label={'Distribuidora'}
+                            validation={possivelFraudeDistribuidora}
+                        />
+                    }
+                    id="6"
+                    aria-controls="6"
+                />
             </Tabs>
         </HeaderTabsContainer>
     )
