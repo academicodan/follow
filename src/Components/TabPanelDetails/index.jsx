@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 import { useEffect, useState } from 'react'
 import { columns } from '../../General/columnsData'
 //import { rowData } from '../../General/rowData'
@@ -9,47 +9,54 @@ import {
 } from '../../Styleds/Main.styled'
 import { HeaderTabs } from '../HeaderTabs'
 import { PanelView } from '../PanelView'
-import { 
+import {
     BlockchainGetTransactionsEmbalagens,
-    BlockchainGetTransactionsLoteLabs, 
+    BlockchainGetTransactionsLoteLabs,
     BlockchainGetTransactionsFarmacos,
     BlockchainGetTransactionsFabrica,
     BlockchainGetTransactionsControladoriaPeso,
     BlockchainGetTransactionsTestesMicro,
-    BlockchainGetTransactionsDistribuidora} from '../../General/blockchainTrackFunctions'
+    BlockchainGetTransactionsDistribuidora,
+} from '../../General/blockchainTrackFunctions'
 
 const queryString = window.location.search
 const urlParams = new URLSearchParams(queryString)
 console.log(urlParams.get('codigolote'))
 
-
 export const TabPanelDetails = () => {
     const [value, setValue] = useState(0)
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
     const [rowsData, setRowData] = useState([])
     const [columnData, setColumnData] = useState([])
 
-
     async function getBlockchainData() {
         //Chama as functions em suas respectivas ordens de consulta na blockchain
-        const blockDataEmbalagens = await BlockchainGetTransactionsEmbalagens(urlParams);
-        const blockDataLoteLabs = await BlockchainGetTransactionsLoteLabs();
-        const blockDataFarmacos = await BlockchainGetTransactionsFarmacos();
-        const blockDataFabrica = await BlockchainGetTransactionsFabrica();
-        const blockDataControladoriaPeso = await BlockchainGetTransactionsControladoriaPeso();
-        const blockDataTestesMicro = await BlockchainGetTransactionsTestesMicro();
-        const blockDataDistribuidora = await BlockchainGetTransactionsDistribuidora();
-        
-       
+        const blockDataEmbalagens = await BlockchainGetTransactionsEmbalagens(urlParams)
+        const blockDataLoteLabs = await BlockchainGetTransactionsLoteLabs()
+        const blockDataFarmacos = await BlockchainGetTransactionsFarmacos()
+        const blockDataFabrica = await BlockchainGetTransactionsFabrica()
+        const blockDataControladoriaPeso =
+            await BlockchainGetTransactionsControladoriaPeso()
+        const blockDataTestesMicro = await BlockchainGetTransactionsTestesMicro()
+        const blockDataDistribuidora = await BlockchainGetTransactionsDistribuidora()
+
         //Seta os dados das tabelas com os dados puxados das requisições anteriores
-        setRowData([blockDataFarmacos,blockDataLoteLabs,blockDataFabrica,blockDataEmbalagens,blockDataControladoriaPeso,blockDataTestesMicro,blockDataDistribuidora])
+        setRowData([
+            blockDataFarmacos,
+            blockDataLoteLabs,
+            blockDataFabrica,
+            blockDataEmbalagens,
+            blockDataControladoriaPeso,
+            blockDataTestesMicro,
+            blockDataDistribuidora,
+        ])
         setColumnData(columns)
-        //setIsLoading(false);
+        setIsLoading(false)
     }
 
     useEffect(() => {
         //Chama o método async para popular as tables
-        getBlockchainData();
+        getBlockchainData()
     }, [])
 
     const handleChange = (newValue) => {
@@ -63,7 +70,7 @@ export const TabPanelDetails = () => {
             </ConatinerHeader>
             <ContainerContent>
                 <PanelView
-                    //isLoading = {isLoading}
+                    isLoading={isLoading}
                     activeTab={value}
                     rowData={rowsData}
                     columnData={columnData}
