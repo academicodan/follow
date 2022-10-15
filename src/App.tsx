@@ -1,11 +1,11 @@
 import React from "react";
 import { FormProvider } from "./Context/FormContext";
-import { Router } from "./router";
-// import '../src/styles/global.scss'
+import { Routes } from "./router";
 import './App.scss'
 import { createTheme, ThemeProvider } from "@material-ui/core";
-// import { Container } from "@material-ui/core";
-// import LinearStepper from "./Components/LinearStepper";
+import { Authprovider } from "./Context/AuthContext";
+import { Router } from "react-router-dom";
+import history from "./history";
 
 
 const App = () =>{
@@ -22,6 +22,7 @@ const App = () =>{
       },
       secondary: {
         main: '#F2858E'
+        // main: '#F279A6'
       },
       // text: {
       //   primary: '#F279A6',
@@ -29,16 +30,20 @@ const App = () =>{
       // },
 
       divider: '#2A2B36',
+    },
+    typography: {
+      fontFamily: 'Roboto'
     }
   })
   return (
-    // <Container maxWidth="md">
-    //   <LinearStepper />
-    // </Container>
     <ThemeProvider theme={theme}>
-    <FormProvider>
-      <Router />
-    </FormProvider>
+      <FormProvider>
+        <Authprovider>
+          <Router history={history}>
+            <Routes /> 
+          </Router>
+        </Authprovider>
+      </FormProvider>
     </ThemeProvider>
   );
 }

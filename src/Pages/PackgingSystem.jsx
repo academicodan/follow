@@ -1,7 +1,6 @@
-import React from "react"
-import { Button, InputAdornment, TextField } from '@material-ui/core'
+import React from 'react'
+import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
 import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
@@ -22,7 +21,7 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../General/blockchainVars'
 
 export const PackgingSystem = () => {
@@ -31,19 +30,14 @@ export const PackgingSystem = () => {
     const [quantidadeFarmacoEmbalagem, setQuantidadeFarmacoEmbalagem] = useState('')
     const [pesoEmbalagem, setPesoEmbalagem] = useState('')
 
-    const history = useHistory()
-    const { state, dispatch } = useForm()
+    const { dispatch } = useForm()
 
     useEffect(() => {
-        if (state.validationStepFactory) {
-            dispatch({
-                type: FormActions.setCurrentStep,
-                payload: 3,
-            })
-        } else {
-            history.goBack()
-        }
-    }, [])
+        dispatch({
+            type: FormActions.setCurrentStep,
+            payload: 3,
+        })
+    }, [dispatch])
 
     const handleNextStep = () => {
         console.table({
@@ -87,11 +81,6 @@ export const PackgingSystem = () => {
             .catch(function (error) {
                 console.log(error)
             })
-        dispatch({
-            type: FormActions.setValidationStepPackgingSystem,
-            payload: true,
-        })
-        history.push('/weightcontroller')
     }
 
     return (
@@ -111,7 +100,6 @@ export const PackgingSystem = () => {
                     placeholder="Insira o Código Lote Embalagens"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -124,7 +112,6 @@ export const PackgingSystem = () => {
                     placeholder="Insira o Tipo"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                 />
 
@@ -137,7 +124,6 @@ export const PackgingSystem = () => {
                     placeholder="Insira a Quantidade Fármaco Embalagem"
                     fullWidth
                     margin="normal"
-                    required
                     type="number"
                 />
 
@@ -150,7 +136,6 @@ export const PackgingSystem = () => {
                     placeholder="Insira o peso da Embalagem"
                     fullWidth
                     margin="normal"
-                    required
                     type="text"
                     InputProps={{
                         endAdornment: (
@@ -158,7 +143,7 @@ export const PackgingSystem = () => {
                         ),
                     }}
                 />
-                <FooterActions path={'/factory'} />
+                <FooterActions />
             </form>
         </ContainerApp>
     )
