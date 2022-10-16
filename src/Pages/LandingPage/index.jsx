@@ -1,20 +1,24 @@
-import { Collapse, CssBaseline } from '@material-ui/core'
-import Button from '@material-ui/core/Button'
+import { CssBaseline } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import FollowApplication from './Components/FollowApplication'
+import Footer from './Components/Footer'
 import Header from './Components/Header'
-import Teste from './Components/Teste'
-import WelcomeContent from './Components/WelcomeContent'
+import Invitation from './Components/Invitation'
+import Mission from './Components/Mission'
+import Phases from './Components/Phases'
+import Team from './Components/Team'
+import Technologies from './Components/Technologies'
+import Welcome from './Components/Welcome'
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        minHeight: '100vh',
+        // minHeight: '100vh',
         // backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/bg.jpg'})`,
         // backgroundImage: `url(${"/assets/bg.jpg"})`,
         // backgroundRepeat: 'no-repeat',
         // backgroundSize: 'cover',
-        backgroundColor: '#1C1E26',
+        // backgroundColor: colors,
     },
 }))
 
@@ -24,11 +28,14 @@ const LandingPage = () => {
         <div className={classes.root}>
             <CssBaseline />
             <Header />
-            <WelcomeContent />
-            <Teste backGround={{ backgroundColor: '#F2858e' }} />
-            <Teste backGround={{ backgroundColor: '#FFF' }} />
-            <Teste backGround={{ backgroundColor: '#1C1E26' }} />
-            <Teste backGround={{ backgroundColor: '#F2858e' }} />
+            <Welcome />
+            <FollowApplication />
+            <Technologies />
+            <Phases />
+            <Invitation />
+            <Team />
+            <Mission />
+            <Footer />
         </div>
     )
 }
