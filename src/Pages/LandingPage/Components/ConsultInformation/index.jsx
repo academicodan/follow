@@ -2,8 +2,9 @@ import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { colors } from '../../styles'
-import InfoCicle from '../InfoCicle'
-
+import ConsultCard from '../ConsultCard'
+import BurstModeOutlinedIcon from '@material-ui/icons/BurstModeOutlined'
+import CropFreeOutlinedIcon from '@material-ui/icons/CropFreeOutlined'
 const useStyles = makeStyles({
     root: {
         display: 'flex',
@@ -29,7 +30,6 @@ const useStyles = makeStyles({
         alignItems: 'center',
         height: '10vh',
     },
-    title: {},
     typografy: {
         color: colors.dark,
     },
@@ -41,56 +41,50 @@ const useStyles = makeStyles({
     spanFab: {
         color: colors.pink,
     },
-    containerIcon: {
+    containerCards: {
         width: '50%',
         height: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        gap: '2rem',
     },
     containerInfo: {
         width: '50%',
         height: '100%',
         display: 'flex',
-        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
     },
 })
 
-const FollowApplication = () => {
+const ConsultInformation = () => {
     const classes = useStyles()
     return (
         <div className={classes.root}>
             <div className={classes.containerBady}>
                 <div className={classes.containerInfo}>
-                    <Typography
-                        variant="h2"
-                        color="primary"
-                        className={classes.title}
-                        gutterBottom
-                    >
-                        Aplicação Follow
-                    </Typography>
-                    <Typography variant={'subtitle1'} className={classes.typografy}>
-                        Desenvolvemos um sistema que monitora e registra cada etapa da
-                        <span className={classes.spanFab}>
-                            {' '}
-                            fabricação dos medicamentos
-                        </span>
-                        , utilizando ainda a tecnologia
-                        <span className={classes.spanFab}> Blockchain</span> que nos
-                        traz muito mais segurança com a imutabilidade das informações.
+                    <Typography variant="h2" color="primary" className={classes.title}>
+                        Como podemos consultar essas informaçoes?
                     </Typography>
                 </div>
-                <div className={classes.containerIcon}>
-                    <InfoCicle info="Monitoramento" color={colors.pink} />
-                    <InfoCicle info="Segurança" color={colors.dark} />
-                    <InfoCicle info="Imutabilidade" color={colors.pink} />
+                <div className={classes.containerCards}>
+                    <ConsultCard
+                        info={'Leitor padrão de QRCode para abrir uma página Web.'}
+                        icon={<CropFreeOutlinedIcon fontSize="large" color="primary" />}
+                    />
+                    <ConsultCard
+                        info={
+                            'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
+                        }
+                        icon={
+                            <BurstModeOutlinedIcon fontSize="large" color="primary" />
+                        }
+                    />
                 </div>
             </div>
         </div>
     )
 }
 
-export default FollowApplication
+export default ConsultInformation

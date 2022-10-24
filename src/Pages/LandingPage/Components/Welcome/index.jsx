@@ -6,27 +6,27 @@ import { colors } from '../../styles'
 const useStyles = makeStyles({
     root: {
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'flex-end',
         height: '100vh',
         backgroundColor: colors.dark,
+        // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
+        backgroundImage: `url(${'/illustrations/welcome_follow.svg'})`,
+        backgroundRepeat: 'no-repeat',
+        // backgroundSize: '',
+        // backgroundPosition: 'center',
+
+        // background-repeat: no-repeat;
+        // backgroundAttachment: 'fixed',
+        backgroundPosition: 'bottom 100px left 100px',
     },
     containerDescription: {
-        width: '40vw',
+        width: '50vw',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        gap: '2rem',
-    },
-    containerImage: {
-        width: '40vw',
-        display: 'flex',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-    },
-    image: {
-        width: '100%',
+        alignItems: 'flex-start',
     },
 })
 
@@ -35,19 +35,12 @@ const Welcome = () => {
     return (
         <div className={classes.root}>
             <div className={classes.containerDescription}>
-                <Typography variant="h2">
+                <Typography variant="h2" gutterBottom>
                     Bem-vindo a sua nova experiência em rastreabilidade
                 </Typography>
-                <Button variant="outlined" size="large" color="primary" fullWidth>
+                <Button variant="outlined" size="large" color="primary">
                     Me leve ao Follow
                 </Button>
-            </div>
-            <div className={classes.containerImage}>
-                <img
-                    src="/illustrations/search_world.svg"
-                    alt="search-world"
-                    className={classes.image}
-                />
             </div>
         </div>
     )
