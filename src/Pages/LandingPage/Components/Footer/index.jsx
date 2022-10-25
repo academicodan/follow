@@ -8,18 +8,18 @@ const useStyles = makeStyles({
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'column',
-        justifyContent: 'center',
         height: '30vh',
         width: '100%',
         backgroundColor: colors.dark,
-        padding: '0px 140px 0px 140px',
-        gap: '4rem',
+        padding: '20px 140px 20px 140px',
     },
     logo: {
         width: '120px',
+        margin: '2.2rem 0 2.2rem 0',
     },
     divider: {
         width: '100%',
+        marginBottom: '2rem',
     },
 })
 

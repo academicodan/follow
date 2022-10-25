@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '50vh',
+        height: '100vh',
         backgroundColor: colors.light,
         // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
         // backgroundImage: `url(${'/illustrations/network.svg'})`,
@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     containerMain: {
         display: 'flex',
         justifyContent: 'center',
+        flexDirection: 'column',
         gap: '2rem',
     },
 })
@@ -42,7 +43,7 @@ const Mission = () => {
     return (
         <div className={classes.root}>
             <Typography variant="h2" className={classes.title}>
-                Quem são eles? Onde vivem?
+                Propósitos? Nós temos!
             </Typography>
             <div className={classes.containerMain}>
                 <CardInfoIcon

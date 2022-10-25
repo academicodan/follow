@@ -9,11 +9,11 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '60vh',
+        height: '80vh',
         backgroundColor: colors.light,
         backgroundImage: `url(${'/illustrations/factory.svg'})`,
         backgroundRepeat: 'no-repeat',
-        // backgroundSize: '',
+        backgroundSize: '24rem',
         // backgroundPosition: 'center',
 
         // background-repeat: no-repeat;

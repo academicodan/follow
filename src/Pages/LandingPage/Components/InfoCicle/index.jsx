@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(() => ({
     root: ({ color }) => ({
-        minWidth: '200px',
-        height: '200px',
+        width: '12rem',
+        height: '12rem',
         borderRadius: '50%',
-        margin: '50px',
+        margin: '0.6rem',
         border: `4px solid ${color}`,
         display: 'flex',
         justifyContent: 'center',

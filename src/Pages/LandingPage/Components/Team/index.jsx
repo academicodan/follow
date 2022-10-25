@@ -9,11 +9,12 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '70vh',
+        height: '80vh',
         backgroundColor: colors.light,
     },
     title: {
-        color: colors.dark,
+        color: colors.pink,
+        marginBottom: '4rem',
     },
     containerCards: {
         width: '100%',
@@ -27,6 +28,9 @@ const Team = () => {
     const classes = useStyles()
     return (
         <div className={classes.root}>
+            <Typography variant="h2" className={classes.title} gutterBottom>
+                Quem são eles? Onde vivem?
+            </Typography>
             <div className={classes.containerCards}>
                 <CardPerson
                     name="Daniel Ribeiro, 23 anos"

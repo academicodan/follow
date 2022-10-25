@@ -1,10 +1,10 @@
-import { AppBar, makeStyles, Toolbar, Typography } from '@material-ui/core'
+import { AppBar, makeStyles, Toolbar } from '@material-ui/core'
 import React from 'react'
 import { colors } from '../../styles'
 
 const useStyles = makeStyles({
     logo: {
-        width: '8rem',
+        width: '6rem',
     },
     appbar: {
         backgroundColor: colors.dark,
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     toolbar: {
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '100px',
+        minHeight: '5.2rem',
         alignItems: 'center',
     },
 })

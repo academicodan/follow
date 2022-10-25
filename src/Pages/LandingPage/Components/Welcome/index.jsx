@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
         backgroundImage: `url(${'/illustrations/welcome_follow.svg'})`,
         backgroundRepeat: 'no-repeat',
-        // backgroundSize: '',
+        backgroundSize: '40rem',
         // backgroundPosition: 'center',
 
         // background-repeat: no-repeat;
@@ -26,7 +26,11 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'flex-start',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+    span: {
+        color: colors.pink,
     },
 })
 
@@ -36,7 +40,8 @@ const Welcome = () => {
         <div className={classes.root}>
             <div className={classes.containerDescription}>
                 <Typography variant="h2" gutterBottom>
-                    Bem-vindo a sua nova experiência em rastreabilidade
+                    <span className={classes.span}>Bem-vindo </span>a sua nova
+                    experiência em rastreabilidade
                 </Typography>
                 <Button variant="outlined" size="large" color="primary">
                     Me leve ao Follow

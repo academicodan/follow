@@ -14,29 +14,47 @@ const useStyles = makeStyles(() => ({
         height: '500px',
         background: 'transparent',
     },
-    media: {
-        height: '360px',
-    },
+    media: ({ imgPath }) => ({
+        height: '260px',
+        width: '260px',
+        backgroundImage: `url(${imgPath})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        borderRadius: '50%',
+        margin: '0.6rem',
+        border: `4px solid ${colors.light}`,
+        backgroundSize: '16rem',
+
+        // background-repeat: no-repeat;
+        // backgroundAttachment: 'fixed',
+    }),
     typograpgy: {
         color: colors.dark,
+    },
+    desc: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        color: colors.dark,
+    },
+    descColor: {
+        color: colors.pink,
     },
 }))
 
 const CardPerson = ({ name, imgPath, desc }) => {
-    const classes = useStyles({})
+    const classes = useStyles({ imgPath })
 
     return (
-        <Card className={classes.root}>
-            <CardActionArea>
-                <CardMedia image={imgPath} className={classes.media} />
-            </CardActionArea>
-            <CardContent className={classes.typograpgy}>
+        <div>
+            <div className={classes.media} />
+            <div className={classes.desc}>
                 <Typography gutterBottom>{name}</Typography>
-                <Typography variant="body2" component="p">
+                <Typography variant="body2" component="p" className={classes.descColor}>
                     {desc}
                 </Typography>
-            </CardContent>
-        </Card>
+            </div>
+        </div>
     )
 }
 

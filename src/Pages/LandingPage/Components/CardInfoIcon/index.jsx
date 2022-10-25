@@ -9,10 +9,17 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         textAlign: 'center',
         color: colors.dark,
-        maxWidth: '28rem',
+        maxWidth: '60rem',
     },
     info: {
         textAlign: 'center',
+    },
+    title: {
+        display: 'flex',
+        height: '50px',
+        alignItems: 'center',
+        color: colors.pink,
+        gap: '0.6rem',
     },
 }))
 
@@ -21,13 +28,13 @@ const CardInfoIcon = ({ icon, title, info }) => {
 
     return (
         <div className={classes.root}>
-            {/* <Typography variant="h4" gutterBottom>
-                {title}
-            </Typography> */}
+            <div className={classes.title}>
+                <Typography variant="h5">{title}</Typography>
+                {icon}
+            </div>
             <Typography className={classes.info} variant={'subtitle1'} gutterBottom>
                 {info}
             </Typography>
-            {icon}
         </div>
     )
 }

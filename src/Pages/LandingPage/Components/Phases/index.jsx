@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from '@material-ui/core'
+import { Container, Divider, Grid, Typography } from '@material-ui/core'
 import { blue } from '@material-ui/core/colors'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
@@ -6,11 +6,12 @@ import { colors } from '../../styles'
 
 const useStyles = makeStyles({
     root: {
-        height: '70vh',
+        height: '90vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.light,
+        gap: '2rem',
         padding: '0px 140px 0px 140px',
     },
     containerInfo1: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles({
         // paddingRight: '12rem',
     },
     img: {
-        width: '400px',
+        width: '20rem',
     },
     containerInfo2: {
         display: 'flex',
@@ -68,6 +69,7 @@ const Phases = () => {
                     className={classes.img}
                 />
             </div>
+            <Divider orientation="vertical" light />
             <div className={classes.containerInfo2}>
                 <Typography variant="h2" className={classes.smartTitle} paragraph>
                     Smart Contract

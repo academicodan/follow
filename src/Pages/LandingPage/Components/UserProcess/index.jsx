@@ -6,7 +6,7 @@ import { colors } from '../../styles'
 const useStyles = makeStyles({
     root: {
         display: 'flex',
-        height: '50vh',
+        height: '70vh',
         justifyContent: 'center',
         backgroundColor: colors.light,
         padding: '0px 140px 0px 140px',
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
         alignItems: 'center',
     },
     image: {
-        width: '30rem',
+        width: '26rem',
     },
 })
 

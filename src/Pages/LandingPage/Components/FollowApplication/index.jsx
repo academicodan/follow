@@ -72,7 +72,7 @@ const FollowApplication = () => {
                     >
                         Aplicação Follow
                     </Typography>
-                    <Typography variant={'subtitle1'} className={classes.typografy}>
+                    <Typography variant="subtitle1" className={classes.typografy}>
                         Desenvolvemos um sistema que monitora e registra cada etapa da
                         <span className={classes.spanFab}>
                             {' '}
