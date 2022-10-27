@@ -1,6 +1,7 @@
 import { Button, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
+import history from '../../../../history'
 import { colors } from '../../styles'
 
 const useStyles = makeStyles({
@@ -43,7 +44,13 @@ const Welcome = () => {
                     <span className={classes.span}>Bem-vindo </span>a sua nova
                     experiência em rastreabilidade
                 </Typography>
-                <Button variant="outlined" size="large" color="primary">
+                <Button
+                    variant="outlined"
+                    size="large"
+                    color="primary"
+                    // onClick={() => history.push('/follow')}
+                    onClick={() => window.open('/follow')}
+                >
                     Me leve ao Follow
                 </Button>
             </div>

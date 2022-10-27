@@ -26,6 +26,7 @@ const InfoBorder = ({ icon, color, info }) => {
             <Typography className={classes.info} variant={'body1'}>
                 {info}
             </Typography>
+            {icon}
         </div>
     )
 }

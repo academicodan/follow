@@ -2,6 +2,7 @@ import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { colors } from '../../styles'
+import SecurityIcon from '@material-ui/icons/Security'
 
 const useStyles = makeStyles({
     root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
+        alignItems: 'center',
     },
     containerImage: {
         width: '50%',
@@ -34,6 +36,11 @@ const useStyles = makeStyles({
     },
     image: {
         width: '26rem',
+    },
+    icon: {
+        color: colors.pink,
+        fontSize: '10rem',
+        marginBottom: '1rem',
     },
 })
 
@@ -49,6 +56,7 @@ const UserProcess = () => {
                 />
             </div>
             <div className={classes.containerInfo}>
+                <SecurityIcon className={classes.icon} />
                 <Typography
                     variant={'subtitle1'}
                     className={classes.typografy}

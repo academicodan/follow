@@ -13,6 +13,7 @@ import { TablePossibleFraudes } from './Pages/TablePossibleFrauds'
 import Login from './Pages/Login'
 import { Context } from './Context/AuthContext'
 import LandingPage from './Pages/LandingPage'
+import Follow from './Pages/Follow'
 
 const CustomRouter = ({ isPrivite, ...rest }) => {
     const { authenticated } = useContext(Context)
@@ -27,8 +28,9 @@ const CustomRouter = ({ isPrivite, ...rest }) => {
 export const Routes = () => {
     return (
         <Switch>
-            <CustomRouter exact path="/follow" component={LandingPage} />
-            <CustomRouter exact path="/" component={Login} />
+            <CustomRouter exact path="/" component={LandingPage} />
+            <CustomRouter exact path="/follow" component={Follow} />
+            <CustomRouter exact path="/login" component={Login} />
             <CustomRouter exact isPrivite path="/pharmaco" component={Pharmaco} />
             <CustomRouter exact isPrivite path="/laboratory" component={Laboratory} />
             <CustomRouter exact isPrivite path="/factory" component={Factory} />

@@ -25,6 +25,9 @@ const App = () =>{
         main: '#F2858E'
         // main: '#F279A6'
       },
+        // main: '#F279A6',
+    
+
       // text: {
       //   primary: '#FFF',
       //   secondary: '#1C1E26'
@@ -32,12 +35,26 @@ const App = () =>{
 
       divider: '#2A2B36',
     },  
-    // typography: {
-    //   body1: {
-      
-    //   }
-    // },
+
+    // icon {
+
+    // }
+    typography: {
+      subtitle1: {
+        fontSize: '1.2rem',
+        fontWeight: 'lighter',
+      }
+    },
   })
+
+
+  // const theme = createTheme({
+  //   typography: {
+  //     button: {
+  //       fontSize: '1rem',
+  //     },
+  //   },
+  // });
   return (
     <ThemeProvider theme={theme}>
       <FormProvider>

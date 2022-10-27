@@ -72,7 +72,7 @@ const Phases = () => {
             <Divider orientation="vertical" light />
             <div className={classes.containerInfo2}>
                 <Typography variant="h2" className={classes.smartTitle} paragraph>
-                    Smart Contract
+                    Contrato Inteligente
                 </Typography>
                 <Typography variant={'subtitle1'} paragraph>
                     É um tipo de contrato digital que garante a auto-excecução das
@@ -88,6 +88,11 @@ const Phases = () => {
                     deseja registrar na blockchain, e assim a inserção é feita de
                     maneira correta.
                 </Typography>
+                <img
+                    src="/illustrations/accept_terms.svg"
+                    alt="laboratory"
+                    className={classes.img}
+                />
             </div>
         </div>
     )
