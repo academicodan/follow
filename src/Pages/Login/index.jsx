@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
         background: '#1C1E26',
     },
     loginTitle: {
-        fontSize: '2rem',
         color: '#FFF',
     },
     footerButton: {
@@ -72,7 +71,7 @@ const Login = () => {
 
     return (
         <div className={classes.root}>
-            <Fade in={checked} {...(checked ? { timeout: 1500 } : {})}>
+            {/* <Fade in={checked} {...(checked ? { timeout: 1500 } : {})}>
                 <div className={classes.header}>
                     <Typography variant="h2" component="span" color="secondary">
                         Bem-Vindo ao Follow
@@ -84,7 +83,12 @@ const Login = () => {
                         className={classes.image}
                     />
                 </div>
-            </Fade>
+            </Fade> */}
+            <div className={classes.containerTitle}>
+                <Typography variant="subtitle1" className={classes.loginTitle}>
+                    Selecione um usuário para acessar o sistema de registros
+                </Typography>
+            </div>
             <form
                 className={classes.containerForm}
                 onSubmit={(e) => {

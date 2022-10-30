@@ -19,22 +19,42 @@ const App = () =>{
         // main: '#8F4EAc'
         main: '#F2858e'
         // main: '#bd41BF'
+ 
       },
       secondary: {
         main: '#F2858E'
         // main: '#F279A6'
       },
+        // main: '#F279A6',
+    
+
       // text: {
-      //   primary: '#F279A6',
-      //   secondary: '#F2858E'
+      //   primary: '#FFF',
+      //   secondary: '#1C1E26'
       // },
 
       divider: '#2A2B36',
-    },
+    },  
+
+    // icon {
+
+    // }
     typography: {
-      fontFamily: 'Roboto'
-    }
+      subtitle1: {
+        fontSize: '1.2rem',
+        fontWeight: 'lighter',
+      }
+    },
   })
+
+
+  // const theme = createTheme({
+  //   typography: {
+  //     button: {
+  //       fontSize: '1rem',
+  //     },
+  //   },
+  // });
   return (
     <ThemeProvider theme={theme}>
       <FormProvider>
