@@ -14,6 +14,14 @@ import {
 import { useForm } from '../../Context/FormContext'
 import { Header } from '../Header'
 import style from './styles.module.scss'
+import {
+    ConatinerHeader,
+    ContainerContent,
+    ContainerDivider,
+    ContainerForm,
+    ContainerMain,
+    ContainerStepForm,
+} from '../../Styleds/Main.styled'
 
 function getSteps() {
     return [
@@ -27,39 +35,55 @@ function getSteps() {
     ]
 }
 
-export const ContainerApp = ({ children, notStep }) => {
+export const ContainerApp = ({ children }) => {
     const steps = getSteps()
     const { state } = useForm()
 
     return (
-        <Paper style={{ height: '100vh' }}>
-            <Header />
-            <Container className={style.displayContainer}>
-                {!notStep && (
-                    <>
-                        <Stepper
-                            activeStep={state.currentStep}
-                            orientation="vertical"
-                            className={style.displayStepper}
-                        >
-                            {steps.map((stepItem, index) => {
-                                return (
-                                    <Step key={index}>
-                                        <StepLabel>{stepItem}</StepLabel>
-                                    </Step>
-                                )
-                            })}
-                        </Stepper>
-                        <Divider
-                            orientation="vertical"
-                            variant="middle"
-                            flexItem
-                            className={style.displayDivider}
-                        />
-                    </>
-                )}
-                <Container className={style.displayForm}>{children}</Container>
-            </Container>
-        </Paper>
+        <ContainerMain>
+            <ConatinerHeader>
+                <Header hasSequenceOfProcesses title="Registro de Transações" />
+            </ConatinerHeader>
+            <ContainerContent>
+                <ContainerStepForm>
+                    <Stepper activeStep={state.currentStep} orientation="vertical">
+                        {steps.map((stepItem, index) => {
+                            return (
+                                <Step key={index}>
+                                    <StepLabel>{stepItem}</StepLabel>
+                                </Step>
+                            )
+                        })}
+                    </Stepper>
+                    <ContainerDivider>
+                        <Divider orientation="vertical" variant="fullWidth" />
+                    </ContainerDivider>
+                    <ContainerForm>{children}</ContainerForm>
+                </ContainerStepForm>
+            </ContainerContent>
+        </ContainerMain>
+        // <Container className={style.displayContainer}>
+        //     <Stepper
+        //         activeStep={state.currentStep}
+        //         orientation="vertical"
+        //         className={style.displayStepper}
+        //     >
+        //         {steps.map((stepItem, index) => {
+        //             return (
+        //                 <Step key={index}>
+        //                     <StepLabel>{stepItem}</StepLabel>
+        //                 </Step>
+        //             )
+        //         })}
+        //     </Stepper>
+        //     <Divider
+        //         orientation="vertical"
+        //         variant="middle"
+        //         flexItem
+        //         className={style.displayDivider}
+        //     />
+        //     <Container className={style.displayForm}>{children}</Container>
+        // </Container>
+        // </Paper>
     )
 }
