@@ -1,10 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
+    AppBar,
     Button,
     Divider,
     IconButton,
+    makeStyles,
     Menu,
     MenuItem,
+    Toolbar,
     Typography,
 } from '@material-ui/core'
 import { MoreVert } from '@material-ui/icons'
@@ -14,8 +17,16 @@ import { Link } from 'react-router-dom'
 import style from './styles.module.scss'
 import { Context } from '../../Context/AuthContext'
 
-export const Header = ({ hasLogTransactions, hasLogaut }) => {
-    const [anchorEl, setAnchorEl] = React.useState(null)
+const useStyles = makeStyles({
+    root: {},
+    img: {
+        width: '2rem',
+    },
+})
+
+export const Header = ({ hasLogTransactions, hasSequenceOfProcesses, title }) => {
+    const classes = useStyles()
+    const [anchorEl, setAnchorEl] = useState(null)
     const { handleLogaut } = useContext(Context)
     const open = Boolean(anchorEl)
 
@@ -35,18 +46,22 @@ export const Header = ({ hasLogTransactions, hasLogaut }) => {
                     className={style.logo}
                 />
                 <Divider orientation="vertical" variant="middle" flexItem />
-                <Typography className={style.typography}>Follow</Typography>
+                <Typography className={style.typography}>
+                    {title || 'Follow'}
+                </Typography>
                 <div className={style.displayLinks}>
                     {hasLogTransactions && (
                         <Link to="/pharmaco" className={style.link}>
                             <Button variant="outlined">Registrar Transações</Button>
                         </Link>
                     )}
-                    <Link to="/tableTransactions" className={style.link}>
-                        <Button variant="contained" color="primary">
-                            Sequência de Processos
-                        </Button>
-                    </Link>
+                    {hasSequenceOfProcesses && (
+                        <Link to="/tableTransactions" className={style.link}>
+                            <Button variant="contained" color="primary">
+                                Sequência de Processos
+                            </Button>
+                        </Link>
+                    )}
                     <IconButton onClick={handleClick}>
                         <MoreVert />
                     </IconButton>

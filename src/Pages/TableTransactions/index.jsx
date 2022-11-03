@@ -1,5 +1,11 @@
-import React, { useMemo } from "react"
+import React, { useMemo } from 'react'
 import { ContainerApp } from '../../Components/ContainerApp'
+import {
+    ConatinerHeader,
+    ContainerMain,
+    ContainerContent,
+    ContainerTable,
+} from '../../Styleds/Main.styled'
 import MaterialTable from 'material-table'
 import { useEffect, useState } from 'react'
 import { Dialog } from '@material-ui/core'
@@ -21,36 +27,36 @@ import {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 } from '../../General/blockchainVars'
-import SelectInput from "@material-ui/core/Select/SelectInput"
+import SelectInput from '@material-ui/core/Select/SelectInput'
+import { localization } from '../../General/localization'
+import { Header } from '../../Components/Header'
 
-
-var data = [];
-
+var data = []
 
 //PUXAR DADOS DA BLOCKCHAIN
-    var dataBLOCK = JSON.stringify({
-        "channel": CHANNEL,
-        "chaincode": CHAINCODE_NAME,
-        "chaincodeVer": CHAINCODE_VER,
-        "method": QUERY_EVENT,
-        "args": [
-        "{\"selector\":{\"Embalagem\":\"*\"}}" //get em todas as embalagens contidas na blockchain
-        ]
-    });
-    
-    var config = {
-        method: 'post',
-        url: URL_QUERY,
-        headers: { 
-        'Authorization': AUTH_BASE64, 
-        'Content-Type': 'application/json'
-        },
-        data : dataBLOCK
-    };
+var dataBLOCK = JSON.stringify({
+    channel: CHANNEL,
+    chaincode: CHAINCODE_NAME,
+    chaincodeVer: CHAINCODE_VER,
+    method: QUERY_EVENT,
+    args: [
+        '{"selector":{"Embalagem":"*"}}', //get em todas as embalagens contidas na blockchain
+    ],
+})
 
-  //FIM PUXAR DADOS BLOCKCHAIN
+var config = {
+    method: 'post',
+    url: URL_QUERY,
+    headers: {
+        Authorization: AUTH_BASE64,
+        'Content-Type': 'application/json',
+    },
+    data: dataBLOCK,
+}
+
+//FIM PUXAR DADOS BLOCKCHAIN
 
 const data1 = [
     {
@@ -90,50 +96,47 @@ const data1 = [
     },
 ]
 
-
 // Is possible convert id or data(number) in status
 export const TableTransactions = () => {
     const [listTransactions, setListTransactions] = useState()
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true)
     const [open, setOpen] = useState(false)
     const [imgPath, setImgPath] = useState('')
 
-    
     const BlockchainGetTransactions = async () => {
         //loading = true;
-        const response = await axios(config);
-        console.log(response.data.result);
-        data = [];
-        for(var i=0; i < (response.data.result.payload.length);i++){
-            console.log((i+1)+"/"+response.data.result.payload.length);
+        const response = await axios(config)
+        console.log(response.data.result)
+        data = []
+        for (var i = 0; i < response.data.result.payload.length; i++) {
+            console.log(i + 1 + '/' + response.data.result.payload.length)
             /**LEMBRAR DE EDITAR O TIPO DE OBJETO PARA A ETAPA DE EMBALAGEM (PRECISA FAZER UM GET NO SMARTCONTRACT PARA ISSO) */
             data.push({
-                id: i+1,
+                id: i + 1,
                 codigoLote: response.data.result.payload[i].Record.CodigoLoteEmbalagens,
                 tipo: response.data.result.payload[i].Record.Tipo,
                 quantPacotes: response.data.result.payload[i].Record.QuantidadePacotes,
                 peso: response.data.result.payload[i].Record.Peso,
                 dataRegistro: response.data.result.payload[i].Record.DataRegistro,
             })
-        }   
+        }
         //loading = false;
         setIsLoading(false)
-        return data;
+        return data
     }
 
     async function getBlockchainData() {
-        const blockData = await BlockchainGetTransactions();
-        setListTransactions(blockData);
+        const blockData = await BlockchainGetTransactions()
+        setListTransactions(blockData)
     }
 
     useEffect(() => {
-        getBlockchainData();
-     }, [])
+        getBlockchainData()
+    }, [])
 
     // const listTransactions = useMemo(() =>{
     //     return getBlockchainData();
     // },[getBlockchainData])
-    
 
     const handleClickOpen = () => {
         setOpen(true)
@@ -183,40 +186,49 @@ export const TableTransactions = () => {
         { title: 'Data Registro', field: 'dataRegistro' },
     ]
     return (
-        <ContainerApp notStep>
-            <MaterialTable
-                title={'Sequência de Processsos'}
-                isLoading = {isLoading}
-                data={listTransactions}
-                columns={columns}
-                style={{ width: '100%' }}
-                options={{
-                    paging: false,
-                    actionsColumnIndex: -1,
-                }}
-                actions={[
-                    {
-                        icon: 'info',
-                        tooltip: 'Details',
-                        onClick: (event, rowData) => {
-                            console.log(rowData.codigoLote)
-                            window.location.href =
-                                '/tabPanelDetails?codigolote=' + rowData.codigoLote
+        <ContainerMain>
+            <ConatinerHeader>
+                <Header title="Sequência de Processos" />
+            </ConatinerHeader>
+            <ContainerTable>
+                <MaterialTable
+                    isLoading={isLoading}
+                    data={listTransactions}
+                    columns={columns}
+                    style={{ width: '80%' }}
+                    options={{
+                        paging: false,
+                        actionsColumnIndex: -1,
+                        showTitle: false,
+                        headerStyle: {
+                            backgroundColor: '#2A2B36',
                         },
-                    },
-                    {
-                        icon: 'qr_code_scanner',
-                        iconProps: {
-                            color: 'secondary',
+                    }}
+                    actions={[
+                        {
+                            icon: 'info',
+                            tooltip: 'Verificar sequência detalhada ',
+                            onClick: (event, rowData) => {
+                                console.log(rowData.codigoLote)
+                                window.location.href =
+                                    '/tabPanelDetails?codigolote=' + rowData.codigoLote
+                            },
                         },
-                        onClick: (event, rowData) => {
-                            handleClickOpen(rowData)
-                            generateqrCode()
+                        {
+                            icon: 'qr_code_scanner',
+                            iconProps: {
+                                color: 'secondary',
+                            },
+                            onClick: (event, rowData) => {
+                                handleClickOpen(rowData)
+                                generateqrCode()
+                            },
                         },
-                    },
-                ]}
-            />
+                    ]}
+                    localization={localization}
+                />
+            </ContainerTable>
             <SimpleDiolog />
-        </ContainerApp>
+        </ContainerMain>
     )
 }
