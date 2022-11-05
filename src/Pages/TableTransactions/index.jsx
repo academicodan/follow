@@ -218,9 +218,9 @@ export const TableTransactions = () => {
                                 color: 'secondary',
                             },
                             onClick: (event, rowData) => {
-                                const url = window.location.href
-                                const newUrl = `${url}/tabPanelDetails?codigolote=${rowData.codigoLote}`
-
+                                const urlHost = window.location.host
+                                const newUrl = `${urlHost}/tabPanelDetails?codigolote=${rowData.codigoLote}`
+                                console.log(newUrl)
                                 handleClickOpen(rowData)
 
                                 generateqrCode(newUrl)
