@@ -2,10 +2,8 @@ import React from 'react'
 
 import { TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
-import { FooterActions } from '../Components/FooterActions'
 import {
     URL_INVOCATION,
     URL_QUERY,
@@ -25,6 +23,8 @@ import {
     AUTH_BASE64,
 } from '../General/blockchainVars'
 import { useForm } from '../Context/hook/useForm'
+import { FooterActions } from '../Components/FooterActions'
+import { FormActions } from '../Context/FormContext/FormReducer'
 
 export const Tests = () => {
     const [codigoTeste, setCodigoTeste] = useState('')
