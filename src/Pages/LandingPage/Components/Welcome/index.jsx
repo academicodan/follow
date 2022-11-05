@@ -15,7 +15,7 @@ const useStyles = makeStyles({
         // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
         backgroundImage: `url(${'/illustrations/welcome_follow.svg'})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '40rem',
+        backgroundSize: '36rem',
         // backgroundPosition: 'center',
 
         // background-repeat: no-repeat;

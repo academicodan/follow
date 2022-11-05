@@ -10,7 +10,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '50vh',
+        height: '70vh',
         backgroundColor: colors.light,
         // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
         // backgroundImage: `url(${'/illustrations/network.svg'})`,

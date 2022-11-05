@@ -34,7 +34,7 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
-        gap: '2rem',
+        gap: '1.2rem',
     },
 })
 
