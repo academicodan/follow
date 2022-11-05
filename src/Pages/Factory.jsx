@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useForm, FormActions } from '../Context/FormContext'
+import { FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
@@ -24,6 +24,7 @@ import {
     QUERY_EVENT,
     AUTH_BASE64,
 } from '../General/blockchainVars'
+import { useForm } from '../Context/hook/useForm'
 
 export const Factory = () => {
     const [codigoLoteFabrica, setCodigoLoteFabrica] = useState('')

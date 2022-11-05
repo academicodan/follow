@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useReducer } from "react";
+import { createContext, ReactNode,  useReducer } from "react";
 
 // criar tipagens
 
@@ -90,7 +90,7 @@ const initialData: State = {
 };
 
 // Context
-const FormContext = createContext<ContextType | undefined>(undefined)
+export const FormContext = createContext<ContextType | undefined>(undefined)
 
 // enum actions
 export enum FormActions {
@@ -166,14 +166,3 @@ export const FormProvider = ({children}: FormProviderprops) => {
   )
 }
 
-// Hook
-
-export const useForm = () => {
-  const context = useContext(FormContext);
-
-  if(context === undefined) {
-    throw new Error('useForm precisa ser usado dentro de um FormProvider')
-  }
-
-  return context;
-}

@@ -11,7 +11,6 @@ import {
     Container,
 } from '@material-ui/core'
 
-import { useForm } from '../../Context/FormContext'
 import { Header } from '../Header'
 import style from './styles.module.scss'
 import {
@@ -22,6 +21,7 @@ import {
     ContainerMain,
     ContainerStepForm,
 } from '../../Styleds/Main.styled'
+import { useForm } from '../../Context/hook/useForm'
 
 function getSteps() {
     return [
