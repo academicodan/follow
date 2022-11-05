@@ -1,7 +1,6 @@
 import React from 'react'
 import { InputAdornment, TextField } from '@material-ui/core'
 import { useEffect, useState } from 'react'
-import { useForm, FormActions } from '../Context/FormContext'
 import axios from 'axios'
 import { ContainerApp } from '../Components/ContainerApp'
 import { FooterActions } from '../Components/FooterActions'
@@ -23,6 +22,8 @@ import {
     QUERY_EVENT,
     AUTH_BASE64,
 } from '../General/blockchainVars'
+import { useForm } from '../Context/hook/useForm'
+import { FormActions } from '../Context/FormContext/FormReducer'
 
 export const Laboratory = () => {
     const [codigoLote, setCodigoLote] = useState('')

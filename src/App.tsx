@@ -1,11 +1,11 @@
 import React from "react";
-import { FormProvider } from "./Context/FormContext";
 import { Routes } from "./router";
 import './App.scss'
 import { createTheme, ThemeProvider } from "@material-ui/core";
 import { Authprovider } from "./Context/AuthContext";
 import { Router } from "react-router-dom";
 import history from "./history";
+import { FormProvider } from "./Context/FormContext/FormProvider";
 
 
 const App = () =>{
