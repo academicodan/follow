@@ -165,11 +165,9 @@ export const TableTransactions = () => {
         )
     }
 
-    const generateqrCode = async () => {
+    const generateqrCode = async (url) => {
         try {
-            const response = await QRCode.toDataURL(
-                'https://ibeco.com.br/voce-sabe-o-que-e-farmaco/'
-            )
+            const response = await QRCode.toDataURL(url)
             console.log(response)
             setImgPath(response)
         } catch (error) {
@@ -220,8 +218,12 @@ export const TableTransactions = () => {
                                 color: 'secondary',
                             },
                             onClick: (event, rowData) => {
+                                const url = window.location.href
+                                const newUrl = `${url}/tabPanelDetails?codigolote=${rowData.codigoLote}`
+
                                 handleClickOpen(rowData)
-                                generateqrCode()
+
+                                generateqrCode(newUrl)
                             },
                         },
                     ]}
