@@ -9,7 +9,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '80vh',
+        height: '100vh',
         backgroundColor: colors.light,
     },
     title: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        gap: '2rem',
+        gap: '1.6rem',
     },
 })
 
@@ -34,7 +34,7 @@ const Team = () => {
             <div className={classes.containerCards}>
                 <CardPerson
                     name="Daniel Ribeiro, 23 anos"
-                    desc="Software Developer"
+                    desc="Software Engineer"
                     imgPath={'/teamProfile/daniel_profile.jpg'}
                 />
                 <CardPerson

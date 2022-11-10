@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/styles'
 
 const useStyles = makeStyles(() => ({
     root: ({ color }) => ({
-        width: '12rem',
-        height: '12rem',
+        width: '10rem',
+        height: '10rem',
         borderRadius: '50%',
         margin: '0.6rem',
         border: `4px solid ${color}`,

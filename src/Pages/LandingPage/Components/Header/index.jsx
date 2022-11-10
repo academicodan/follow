@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     toolbar: {
         display: 'flex',
         justifyContent: 'center',
-        minHeight: '5.2rem',
+        minHeight: '5.0rem',
         alignItems: 'center',
     },
 })

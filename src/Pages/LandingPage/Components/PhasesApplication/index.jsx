@@ -22,27 +22,27 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        height: '80vh',
+        height: '100vh',
         backgroundColor: colors.light,
         backgroundImage: `url(${'/illustrations/factory.svg'})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '24rem',
+        backgroundSize: '22rem',
         // backgroundPosition: 'center',
 
         // background-repeat: no-repeat;
         // backgroundAttachment: 'fixed',
         backgroundPosition: 'bottom 120px right 160px',
-        padding: '0px 140px 0px 140px',
+        padding: '0px 80px 0px 80px',
     },
     containerIcon: {
         width: '100%',
-        height: '40%',
+        height: '30%',
         display: 'flex',
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         alignItems: 'center',
     },
     button: {
-        marginTop: '4rem',
+        marginTop: '2rem',
     },
     icon: {
         color: colors.dark,

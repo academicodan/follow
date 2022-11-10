@@ -6,12 +6,12 @@ import { colors } from '../../styles'
 
 const useStyles = makeStyles({
     root: {
-        height: '90vh',
+        height: '100vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.light,
-        gap: '2rem',
+        gap: '1rem',
         padding: '0px 140px 0px 140px',
     },
     containerInfo1: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
         // paddingRight: '12rem',
     },
     img: {
-        width: '20rem',
+        width: '16rem',
     },
     containerInfo2: {
         display: 'flex',

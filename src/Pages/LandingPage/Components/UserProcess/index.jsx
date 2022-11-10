@@ -7,7 +7,7 @@ import SecurityIcon from '@material-ui/icons/Security'
 const useStyles = makeStyles({
     root: {
         display: 'flex',
-        height: '70vh',
+        height: '100vh',
         justifyContent: 'center',
         backgroundColor: colors.light,
         padding: '0px 140px 0px 140px',
