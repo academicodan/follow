@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
         alignItems: 'center',
         background: 'transparent',
         color: colors.dark,
-        gap: '2rem',
+        // gap: '2rem',
     },
     info: {
         textAlign: 'center',

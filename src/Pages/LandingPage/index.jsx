@@ -37,10 +37,10 @@ const LandingPage = () => {
             <ConsultInformation />
             <Phases />
             <PhasesApplication />
-            <Mission />
-            <Team />
+            {/* <Mission /> */}
+            {/* <Team />  */}
             {/* <Invitation /> */}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }

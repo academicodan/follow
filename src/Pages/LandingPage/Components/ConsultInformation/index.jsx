@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { colors } from '../../styles'
@@ -7,10 +7,7 @@ import BurstModeOutlinedIcon from '@material-ui/icons/BurstModeOutlined'
 import CropFreeOutlinedIcon from '@material-ui/icons/CropFreeOutlined'
 const useStyles = makeStyles({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '70vh',
+        minHeight: '70vh',
         backgroundColor: colors.light,
         // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
         // backgroundImage: `url(${'/illustrations/network.svg'})`,
@@ -21,7 +18,6 @@ const useStyles = makeStyles({
         // background-repeat: no-repeat;
         // background-attachment: fixed;
         // background-position: center;
-        padding: '0px 140px 0px 140px',
     },
     titleContainer: {
         width: '100%',
@@ -61,29 +57,48 @@ const useStyles = makeStyles({
 const ConsultInformation = () => {
     const classes = useStyles()
     return (
-        <div className={classes.root}>
-            <div className={classes.containerBady}>
-                <div className={classes.containerInfo}>
-                    <Typography variant="h2" color="primary" className={classes.title}>
-                        Como podemos consultar essas informaçoes?
-                    </Typography>
-                </div>
-                <div className={classes.containerCards}>
-                    <ConsultCard
-                        info={'Leitor padrão de QRCode para abrir uma página Web.'}
-                        icon={<CropFreeOutlinedIcon fontSize="large" color="primary" />}
-                    />
-                    <ConsultCard
-                        info={
-                            'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
-                        }
-                        icon={
-                            <BurstModeOutlinedIcon fontSize="large" color="primary" />
-                        }
-                    />
-                </div>
-            </div>
-        </div>
+        // <div className={classes.root}>
+        //     <div className={classes.containerBady}>
+        //         <div className={classes.containerInfo}>
+        //             <Typography variant="h2" color="primary" className={classes.title}>
+        //                 Como podemos consultar essas informaçoes?
+        //             </Typography>
+        //         </div>
+        //         <div className={classes.containerCards}>
+        // <ConsultCard
+        //     info={'Leitor padrão de QRCode para abrir uma página Web.'}
+        //     icon={<CropFreeOutlinedIcon fontSize="large" color="primary" />}
+        // />
+        // <ConsultCard
+        //     info={
+        //         'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
+        //     }
+        //     icon={
+        //         <BurstModeOutlinedIcon fontSize="large" color="primary" />
+        //     }
+        // />
+        //         </div>
+        //     </div>
+        // </div>
+        <Grid container className={classes.root}>
+            <Grid item container xs={12} md={4} lg={4}>
+                <Typography variant="h2" color="primary" className={classes.title}>
+                    Como podemos consultar essas informaçoes?
+                </Typography>
+            </Grid>
+            <Grid item container xs={12} md={8} lg={8} justifyContent="center">
+                <ConsultCard
+                    info={'Leitor padrão de QRCode para abrir uma página Web.'}
+                    icon={<CropFreeOutlinedIcon fontSize="large" color="primary" />}
+                />
+                <ConsultCard
+                    info={
+                        'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
+                    }
+                    icon={<BurstModeOutlinedIcon fontSize="large" color="primary" />}
+                />
+            </Grid>
+        </Grid>
     )
 }
 
