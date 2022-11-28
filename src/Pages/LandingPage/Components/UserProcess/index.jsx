@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core'
+import { Container, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { colors } from '../../styles'
@@ -6,7 +6,6 @@ import SecurityIcon from '@material-ui/icons/Security'
 
 const useStyles = makeStyles({
     root: {
-        minHeight: '100vh',
         backgroundColor: colors.light,
     },
     typografy: {
@@ -32,12 +31,15 @@ const useStyles = makeStyles({
         alignItems: 'center',
     },
     image: {
-        width: '60%',
+        width: '40%',
     },
     icon: {
         color: colors.pink,
         fontSize: '10rem',
         marginBottom: '1rem',
+    },
+    gridMain: {
+        minHeight: '60vh',
     },
 })
 
@@ -69,40 +71,50 @@ const UserProcess = () => {
         //         </Typography>
         //     </div>
         // </div>
-        <Grid container className={classes.root}>
-            <Grid item container xs={12} md={6} lg={6} justifyContent="center">
-                <img
-                    src="/illustrations/localization.svg"
-                    alt="localization"
-                    className={classes.image}
-                />
-            </Grid>
-            <Grid
-                item
-                container
-                xs={12}
-                md={6}
-                lg={6}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-            >
-                <SecurityIcon className={classes.icon} />
-                <Typography
-                    variant={'subtitle1'}
-                    className={classes.typografy}
-                    paragraph
-                >
-                    O Usuário final pode de forma eficiente escanear o QRCode do
-                    medicamento na fármacia e terá acesso a todas as etapas de
-                    fabricação que foram passadas antes de chegar até a farmácia.
-                </Typography>
-                <Typography variant={'subtitle1'} className={classes.typografy}>
-                    Todas essas informações estarão registradas na blockchain, trazendo
-                    muito mais valor e confiabilidade a esse rastreio.
-                </Typography>
-            </Grid>
-        </Grid>
+        <div className={classes.root}>
+            <Container maxWidth="xl">
+                <Grid container className={classes.gridMain}>
+                    <Grid item container xs={12} md={5} lg={5} justifyContent="center">
+                        <img
+                            src="/illustrations/localization.svg"
+                            alt="localization"
+                            className={classes.image}
+                        />
+                    </Grid>
+                    <Grid
+                        item
+                        container
+                        xs={12}
+                        md={7}
+                        lg={7}
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="center"
+                    >
+                        <SecurityIcon className={classes.icon} />
+                        <Typography
+                            variant={'subtitle1'}
+                            className={classes.typografy}
+                            paragraph
+                            align="center"
+                        >
+                            O Usuário final pode de forma eficiente escanear o QRCode do
+                            medicamento na fármacia e terá acesso a todas as etapas de
+                            fabricação que foram passadas antes de chegar até a
+                            farmácia.
+                        </Typography>
+                        <Typography
+                            variant={'subtitle1'}
+                            className={classes.typografy}
+                            align="center"
+                        >
+                            Todas essas informações estarão registradas na blockchain,
+                            trazendo muito mais valor e confiabilidade a esse rastreio.
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Container>
+        </div>
     )
 }
 

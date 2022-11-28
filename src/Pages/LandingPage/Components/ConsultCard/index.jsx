@@ -4,15 +4,11 @@ import { colors } from '../../styles'
 
 const useStyles = makeStyles(() => ({
     root: {
-        width: '20rem',
-        height: '16rem',
+        minWidth: '120px',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
         alignItems: 'center',
-        background: 'transparent',
         color: colors.dark,
-        // gap: '2rem',
     },
     info: {
         textAlign: 'center',

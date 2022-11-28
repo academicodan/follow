@@ -5,7 +5,6 @@ const useStyles = makeStyles(() => ({
     root: ({ color }) => ({
         minWidth: '200px',
         height: '100px',
-        margin: '50px',
         borderRadius: '10px',
         borderBottom: `4px solid ${color}`,
         display: 'flex',
