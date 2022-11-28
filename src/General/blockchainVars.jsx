@@ -1,7 +1,8 @@
 import React from 'react'
 
 //URLs
-const URL ='https://blockchainpedro-3-brztechcloud01-gru.blockchain.ocp.oraclecloud.com:7443/restproxy' 
+const URL =
+    'https://blockchainpedro-3-brztechcloud01-gru.blockchain.ocp.oraclecloud.com:7443/restproxy'
 const URL_INVOCATION = URL + '/bcsgw/rest/v1/transaction/invocation'
 const URL_QUERY = URL + '/bcsgw/rest/v1/transaction/query'
 
@@ -23,9 +24,7 @@ const ADD_ITEM_DISTRIBUIDO = 'addItemDistribuido'
 const QUERY_EVENT = 'queryEvent'
 
 //AUTH
-const AUTH_BASE64 = "Basic cGVkcm8uY2Fycmlqb0BvcmFjbGUuY29tOk9yYWNsZSYxMjQ0Mjk4Mw==";
-
-
+const AUTH_BASE64 = 'Basic cGVkcm8uY2Fycmlqb0BvcmFjbGUuY29tOk9yYWNsZSYxMjQxMjQ='
 
 export {
     URL_INVOCATION,
@@ -43,5 +42,5 @@ export {
     ADD_ITEM_TESTADO,
     ADD_ITEM_DISTRIBUIDO,
     QUERY_EVENT,
-    AUTH_BASE64
+    AUTH_BASE64,
 }
