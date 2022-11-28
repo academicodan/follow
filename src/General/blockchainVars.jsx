@@ -24,7 +24,7 @@ const ADD_ITEM_DISTRIBUIDO = 'addItemDistribuido'
 const QUERY_EVENT = 'queryEvent'
 
 //AUTH
-const AUTH_BASE64 = 'Basic cGVkcm8uY2Fycmlqb0BvcmFjbGUuY29tOk9yYWNsZSYxMjQxMjQ='
+const AUTH_BASE64 = 'Basic cGVkcm8uY2Fycmlqb0BvcmFjbGUuY29tOk9yYWNsZSYxMjM0NQ=='
 
 export {
     URL_INVOCATION,
