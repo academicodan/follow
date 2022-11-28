@@ -1,4 +1,4 @@
-import { Button, makeStyles, Typography } from '@material-ui/core'
+import { Button, Container, Grid, makeStyles, Typography } from '@material-ui/core'
 import { colors } from '../LandingPage/styles'
 import CloudUploadIcon from '@material-ui/icons/CloudUpload'
 import PageviewIcon from '@material-ui/icons/Pageview'
@@ -6,11 +6,6 @@ import history from '../../history'
 
 const useStyles = makeStyles({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
         backgroundColor: colors.dark,
     },
     containerTitle: {
@@ -36,44 +31,74 @@ const useStyles = makeStyles({
         display: 'flex',
         justifyContent: 'center',
     },
+    gridMain: {
+        minHeight: '100vh',
+    },
 })
 
 const Follow = () => {
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <div className={classes.containerTitle}>
-                <Typography variant="h2" className={classes.typography} gutterBottom>
-                    Follow
-                </Typography>
-                <img src="/img/follow-logo.png" alt="logo" className={classes.img} />
-            </div>
-            <div className={classes.containerButton}>
-                <div className={classes.container}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        fullWidth
-                        startIcon={<CloudUploadIcon />}
-                        onClick={() => history.push('/login')}
+            <Container>
+                <Grid
+                    container
+                    justifyContent="center"
+                    direction="column"
+                    alignItems="center"
+                    className={classes.gridMain}
+                >
+                    <Grid
+                        item
+                        container
+                        justifyContent="center"
+                        xs={12}
+                        md={12}
+                        lg={12}
                     >
-                        Registrar Items
-                    </Button>
-                </div>
-                <div className={classes.container}>
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        size="large"
-                        fullWidth
-                        startIcon={<PageviewIcon />}
-                        onClick={() => history.push('/tableTransactions')}
-                    >
-                        Consultar Transações
-                    </Button>
-                </div>
-            </div>
+                        <div>
+                            <Typography
+                                variant="h2"
+                                className={classes.typography}
+                                gutterBottom
+                            >
+                                Follow
+                            </Typography>
+                            <img
+                                src="/img/follow-logo.png"
+                                alt="logo"
+                                className={classes.img}
+                            />
+                        </div>
+                    </Grid>
+                    <Grid item container xs={12} md={12} lg={12} spacing={2}>
+                        <Grid item container xs={12} md={6} lg={6}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                size="large"
+                                fullWidth
+                                startIcon={<CloudUploadIcon />}
+                                onClick={() => history.push('/login')}
+                            >
+                                Registrar Items
+                            </Button>
+                        </Grid>
+                        <Grid item container xs={12} md={6} lg={6}>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                size="large"
+                                fullWidth
+                                startIcon={<PageviewIcon />}
+                                onClick={() => history.push('/tableTransactions')}
+                            >
+                                Consultar Transações
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
     )
 }

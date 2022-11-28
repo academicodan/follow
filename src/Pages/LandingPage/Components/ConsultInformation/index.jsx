@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core'
+import { Container, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { colors } from '../../styles'
@@ -7,21 +7,8 @@ import BurstModeOutlinedIcon from '@material-ui/icons/BurstModeOutlined'
 import CropFreeOutlinedIcon from '@material-ui/icons/CropFreeOutlined'
 const useStyles = makeStyles({
     root: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '70vh',
         backgroundColor: colors.light,
-        // backgroundImage: `url(${process.env.PUBLIC_URL + "/assets/bg.jpg"})`,
-        // backgroundImage: `url(${'/illustrations/network.svg'})`,
-        // backgroundRepeat: 'no-repeat',
-        // backgroundSize: '',
-        // backgroundPosition: 'center',
-
-        // background-repeat: no-repeat;
-        // background-attachment: fixed;
-        // background-position: center;
-        padding: '0px 140px 0px 140px',
+        padding: '6% 0',
     },
     titleContainer: {
         width: '100%',
@@ -56,33 +43,71 @@ const useStyles = makeStyles({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    gridMain: {
+        minHeight: '70vh',
+    },
 })
 
 const ConsultInformation = () => {
     const classes = useStyles()
     return (
         <div className={classes.root}>
-            <div className={classes.containerBady}>
-                <div className={classes.containerInfo}>
-                    <Typography variant="h2" color="primary" className={classes.title}>
-                        Como podemos consultar essas informaçoes?
-                    </Typography>
-                </div>
-                <div className={classes.containerCards}>
-                    <ConsultCard
-                        info={'Leitor padrão de QRCode para abrir uma página Web.'}
-                        icon={<CropFreeOutlinedIcon fontSize="large" color="primary" />}
-                    />
-                    <ConsultCard
-                        info={
-                            'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
-                        }
-                        icon={
-                            <BurstModeOutlinedIcon fontSize="large" color="primary" />
-                        }
-                    />
-                </div>
-            </div>
+            <Container maxWidth="xl">
+                <Grid container className={classes.gridMain} alignItems="center">
+                    <Grid item container xs={12} md={6} lg={6} justifyContent="center">
+                        <Typography
+                            variant="h2"
+                            color="primary"
+                            align="center"
+                            gutterBottom
+                        >
+                            Como podemos consultar essas informaçoes?
+                        </Typography>
+                    </Grid>
+                    <Grid item container xs={12} md={6} lg={6} justifyContent="center">
+                        <Grid
+                            item
+                            container
+                            xs={12}
+                            md={6}
+                            lg={6}
+                            justifyContent="center"
+                        >
+                            <ConsultCard
+                                info={
+                                    'Leitor padrão de QRCode para abrir uma página Web.'
+                                }
+                                icon={
+                                    <CropFreeOutlinedIcon
+                                        fontSize="large"
+                                        color="primary"
+                                    />
+                                }
+                            />
+                        </Grid>
+                        <Grid
+                            item
+                            container
+                            xs={12}
+                            md={6}
+                            lg={6}
+                            justifyContent="center"
+                        >
+                            <ConsultCard
+                                info={
+                                    'Utilizando nosso app de realidade aumentada que pode também ler o QRCode e nos retornar o resultado de confiabilidade no medicamento de forma bem mais divertidade inovadora'
+                                }
+                                icon={
+                                    <BurstModeOutlinedIcon
+                                        fontSize="large"
+                                        color="primary"
+                                    />
+                                }
+                            />
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Container>
         </div>
     )
 }

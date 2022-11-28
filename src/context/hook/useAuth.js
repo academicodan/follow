@@ -14,7 +14,7 @@ const useAuth = () => {
 
     const handleLogaut = () => {
         setAuthenticated(false)
-        history.push('/login')
+        history.push('/follow')
     }
 
     return { authenticated, handleLogin, handleLogaut }
