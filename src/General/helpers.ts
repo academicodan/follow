@@ -15,13 +15,13 @@ enum users {
 }
 
 enum passwords {
-    PHARMACO = 'passpharmaco',
-    LABORATORY = 'passlaboratory',
-    FACTORY = 'passfactory',
-    PACKGING_SYSTEM = 'passpackgingsystem',
-    WEIGHT_CONTROLLER = 'passweightcontroller',
-    TESTS = 'passtests',
-    DISTRIBUTOR = 'passdistributor',
+    PHARMACO = 'pass',
+    LABORATORY = 'pass',
+    FACTORY = 'pass',
+    PACKGING_SYSTEM = 'pass',
+    WEIGHT_CONTROLLER = 'pass',
+    TESTS = 'pass',
+    DISTRIBUTOR = 'pass',
 }
 
 enum routes {
